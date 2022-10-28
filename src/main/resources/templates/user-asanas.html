@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}"/>
+  <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+
+
+<main class="container">
+  <div class="asanas">
+    <div th:each="el : ${asanas}" th:if="${!asanas.isEmpty()}">
+      <a th:href="'/asana/'+ ${el.id}"><img th:src="${el.image}" th:alt="${el.title}"></a>
+      <h3 th:text="${el.title}" />
+    </div>
+  </div>
+  <div th:if="${asanas.isEmpty()}" class="block">
+    <p>No asanas</p>
+  </div>
+
+
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+
+
+</body>
+</html>

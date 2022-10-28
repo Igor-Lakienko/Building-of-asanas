@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать Асану</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+
+<main class="container">
+
+    <h1>Редактировать Асану</h1>
+    <form method="post" th:action="@{'/asana/' + ${asana.id} + '/update'}">
+        <input type="text" name="title" th:value="${asana.title}" placeholder="Введите название Ассаны">
+        <input type="text" name="image" th:value="${asana.image}" placeholder="Введите URL Фото">
+        <textarea name="info" placeholder="Введите описание" th:text="${asana.info}"></textarea>
+        <textarea name="fullInfo" placeholder="Введите полное описание" th:text="${asana.fullInfo}"></textarea>
+        <button type="submit">Редактировать</button>
+    </form>
+
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+
+
+</body>
+</html>

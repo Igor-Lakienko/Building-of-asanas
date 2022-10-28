@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${asana.title}"/>
+  <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+<main class="container">
+  <div class="asanas">
+    <div>
+      <img th:src="${asana.image}" th:alt="${asana.title}"/><br>
+      <h3 th:text="${asana.title}" /><br>
+      <p th:text="${asana.info}" /><br><br>
+      <h3 th:text="${asana.fullInfo}"></h3><br><br><br>
+      <p>Автор: <b th:text="${asana.user.username}"/></p>
+    </div>
+  </div>
+  <br><br>
+  <a th:href="'/asana/' + ${asana.id} + '/update'" class="edit-btn" sec:authorize="hasAuthority('REDACTOR')
+ || hasAuthority('ADMIN')">Редактировать</a>
+  <form method="post" th:action="@{'/asana/' + ${asana.id} + '/delete'}" sec:authorize="hasAuthority('ADMIN')">
+    <button type="submit">Удалить</button>
+  </form>
+</main>
+
+<div th:replace="layouts/footer :: footer"></div>
+
+
+</body>
+</html>

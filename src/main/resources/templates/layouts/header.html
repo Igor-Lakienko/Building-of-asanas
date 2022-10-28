@@ -1,0 +1,24 @@
+<header class="container" xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        th:fragment="header">
+    <span class="logo">Building-asanas</span>
+    <nav>
+        <a href="/">Главная страница</a>
+        <a href="/about-us">О Нас</a>
+
+
+        <span sec:authorize="!isAuthenticated()">
+            <a href="/reg">Регистрация</a>
+            <a href="/login">Авторизация</a>
+         </span>
+
+        <span sec:authorize="isAuthenticated()">
+            <a href="/user">Кабинет Пользователя</a>
+            <a href="/asana/add">Добавить Ассану</a>
+         </span>
+
+        <span sec:authorize="hasAuthority('ADMIN')">  
+        <a href="/admin">Панель админа</a>
+        </span>
+    </nav>
+</header>
