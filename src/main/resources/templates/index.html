@@ -18,6 +18,7 @@
             <a th:href="'/asana/'+ ${el.id}"><img th:src="${el.image}" th:alt="${el.title}"></a>
             <h3 th:text="${el.title}" />
             <p th:text="${el.info}" />
+            <a href="/"><img class="img" src="https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Circle_Plus-256.png"></a>
         </div>
     </div>
     <div th:if="${asana.isEmpty()}" class="block">

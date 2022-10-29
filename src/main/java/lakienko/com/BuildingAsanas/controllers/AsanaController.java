@@ -20,7 +20,11 @@ public class AsanaController {
 
 
     @GetMapping("/asana/add")
-    public String add(){
+    public String add(@RequestParam(name = "error",defaultValue = "",required = false)String error, Model model){
+
+        if(error.equals("password"))
+            model.addAttribute("error", "Поля не должны быть пустыми!");
+
         return "add-asana";
     }
 
@@ -34,7 +38,13 @@ public class AsanaController {
                         @RequestParam String fullInfo){
 
         Asana asana = new Asana(title, info, image, fullInfo, user);
-        asanaRepository.save(asana);
+
+        if (asana.getTitle().length() < 1 || asana.getImage().length() < 1
+                || asana.getInfo().length() < 1 || asana.getFullInfo().length() < 1)
+            return "redirect:/asana/add?error=password";
+
+        else
+            asanaRepository.save(asana);
 
         return "redirect:/";
     }
@@ -49,9 +59,15 @@ public class AsanaController {
 
 
     @GetMapping("/asana/{id}/update")
-    public String update(@PathVariable(value = "id") long id, Model model){
+    public String update(@PathVariable(value = "id") long id
+                        ,@RequestParam(name = "error",defaultValue = "",required = false) String error, Model model){
+
+        if (error.equals("password"))
+            model.addAttribute("error", "Поля не должны быть пустыми!");
+
         Asana asana = asanaRepository.findById(id).orElse(new Asana());
         model.addAttribute("asana", asana);
+
         return "asana-update";
     }
 
@@ -69,6 +85,10 @@ public class AsanaController {
         asana.setImage(image);
         asana.setInfo(info);
         asana.setFullInfo(fullInfo);
+
+        if (title.length() < 1 || image.length() < 1 || info.length() < 1 || fullInfo.length() < 1)
+            return "redirect:/asana/" + id + "/update?error=password";
+        else
         asanaRepository.save(asana);
 
         return "redirect:/asana/" + id;

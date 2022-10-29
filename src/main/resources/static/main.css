@@ -9,6 +9,10 @@ img{
     width: 100%;
 }
 
+.img {
+    width: 10%;
+}
+
 body{
     background-color: rgb(178, 172, 171);
     font-family: 'Montserrat', sans-serif;
@@ -27,7 +31,7 @@ a:hover{
 
 .container{
     width: 1258px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 header{
@@ -47,14 +51,6 @@ header .logo{
 
 header nav a{
     margin-left: 15px;
-}
-
-footer{
-    float: left;
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    text-align: center;
 }
 
 div.block{
@@ -100,15 +96,19 @@ div.block{
     float: left;
     flex-wrap: wrap;
     justify-content: space-between;
+    
 }
 
 .asana > div{
-    width: 30%;
+    width: 20%;
     margin-bottom: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
     background: indianred;
     padding: 1px;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
+
 
 .asana > div h3 {
     color: aliceblue;
@@ -151,6 +151,20 @@ form button, .edit-btn {
 
 form button:hover { 
     background: darkolivegreen;
+}
+
+.error{
+    font-family: 'Montserrat', sans-serif ;
+    color: rgb(164, 30, 3);
+    font-size: 20px;
+}
+
+footer{
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    text-align: center;
 }
 
 

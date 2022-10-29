@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.swing.text.html.parser.Parser;
+
 import java.security.Principal;
 import java.util.Collections;
 
@@ -29,13 +29,18 @@ public class UserController {
 
 
     @GetMapping("/user")
-    public String user(Principal principal, Model model){
+    public String user(@RequestParam(name = "error", defaultValue = "",required = false)
+                           String error, Principal principal, Model model){
 
-    User user = userRepository.findByUsername(principal.getName());
-    model.addAttribute("email", user.getEmail());
+         User user = userRepository.findByUsername(principal.getName());
+         model.addAttribute("email", user.getEmail());
 
-    return "user";
+        if (error.equals("password"))
+            model.addAttribute("error", "Поля не должны быть пустыми!");
+
+        return "user";
     }
+
 
     @PostMapping("/user/update")
     public String updateUser(Principal principal, User userForm){
@@ -43,20 +48,29 @@ public class UserController {
         User user = userRepository.findByUsername(principal.getName());
         user.setEmail(userForm.getEmail());
         String pass = passwordEncoder.encode(userForm.getPassword());
-        user.setPassword(pass);
         user.setRoles(userForm.getRoles());
+        user.setPassword(pass);
 
-        userRepository.save(user);
+        if (userForm.getPassword().length() < 1 || userForm.getEmail().length() < 1)
+            return "redirect:/user?error=password";
+        else
+            userRepository.save(user);
 
-        return "redirect:/user/";
-
+        return "redirect:/user";
     }
 
 
+
+
     @GetMapping("/reg")
-    public String reg(@RequestParam(name = "error", defaultValue = "",required = false) String error, Model model) {
+    public String reg(@RequestParam(name = "error", defaultValue = "", required = false) String error, Model model) {
+
        if (error.equals("username"))
            model.addAttribute("error", "Такой логин пользователя уже занят");
+
+       if (error.equals("password"))
+           model.addAttribute("error", "Поля не должны быть пустыми!");
+
         return "reg";
     }
 
@@ -67,14 +81,19 @@ public class UserController {
                            @RequestParam String email,
                            @RequestParam String password) {
 
-        if (userRepository.findByUsername(username) != null){
+        if (userRepository.findByUsername(username) != null)
             return "redirect:/reg?error=username";
-        }else{
-        password =passwordEncoder.encode(password);
+
+        password = passwordEncoder.encode(password);
         User user = new User(username,password,email, true, Collections.singleton(Role.USER));
+
+        if (username.length() < 1 || email.length() < 1 || password.length() < 1)
+            return "redirect:/reg?error=password";
+        else
         userRepository.save(user);
+
+
         return "redirect:/login";
-    }
     }
 
 
