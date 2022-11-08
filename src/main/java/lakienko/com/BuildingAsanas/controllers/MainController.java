@@ -1,7 +1,9 @@
 package lakienko.com.BuildingAsanas.controllers;
 
 import lakienko.com.BuildingAsanas.models.Asana;
+import lakienko.com.BuildingAsanas.models.User;
 import lakienko.com.BuildingAsanas.repositories.AsanaRepository;
+import lakienko.com.BuildingAsanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +16,22 @@ public class MainController {
     @Autowired
     private AsanaRepository asanaRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping
     public String index(Model model){
+
         Iterable<Asana> asanas = asanaRepository.findAll();
         model.addAttribute("asana", asanas);
+
+        User users = userRepository.findById(8L).orElse(new User());
+        model.addAttribute("users",users);
+
         return "index";
     }
+
+
 
 
     @GetMapping("/about-us")

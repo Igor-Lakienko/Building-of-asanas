@@ -4,12 +4,12 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name = "asana")
 public class Asana {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private String title,info,image,fullInfo;
 
     @JoinColumn(name = "user_id")

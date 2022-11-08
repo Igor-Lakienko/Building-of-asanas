@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
@@ -15,11 +16,21 @@
 <main class="container">
     <div class="asana">
         <div th:each="el : ${asana}" th:if="${!asana.isEmpty()}">
-            <a th:href="'/asana/'+ ${el.id}"><img th:src="${el.image}" th:alt="${el.title}"></a>
+            <a th:href="'/asana/' + ${el.id}"><img th:src="${el.image}" th:alt="${el.title}"></a>
             <h3 th:text="${el.title}" />
             <p th:text="${el.info}" />
-            <a href="/"><img class="img" src="https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Circle_Plus-256.png"></a>
+
+
+            <div>
+                <p><a  th:href="@{/cart-asanas/} + ${users.id}">Последовательности пользователя</a></p>
+            </div>
+<!--            <a th:href="@{/cart-asanas/8}" class="edit-btn">add</a>-->
+<!--            <form method="get" th:action="@{'/cart-asanas/' + '8'}">-->
+<!--                <button type="submit">Добавить</button>-->
+<!--            </form>-->
+
         </div>
+
     </div>
     <div th:if="${asana.isEmpty()}" class="block">
         <p>Нет Асан!!!</p>

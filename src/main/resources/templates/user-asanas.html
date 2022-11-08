@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <title th:text="${title}"/>
@@ -10,11 +11,12 @@
 
 
 <main class="container">
-  <div class="asanas">
-    <div th:each="el : ${asanas}" th:if="${!asanas.isEmpty()}">
-      <a th:href="'/asana/'+ ${el.id}"><img th:src="${el.image}" th:alt="${el.title}"></a>
-      <h3 th:text="${el.title}" />
+<div class="asana" th:if="${!asanas.isEmpty()}">
+  <div th:each="el : ${asanas}">
+    <img th:src="${el.image}" th:alt="${el.title}"/><br>
+    <h3 th:text="${el.title}"></h3><br>
     </div>
+  </div>
   </div>
   <div th:if="${asanas.isEmpty()}" class="block">
     <p>No asanas</p>

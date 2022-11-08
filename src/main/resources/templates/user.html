@@ -15,7 +15,7 @@
     <br><br>
     <br>
     <h2>Изменить данные</h2>
-    <p>Привет, <span sec:authentication="name" /></p>
+    <p>Привет, <span sec:authentication="name"/></p>
     <form method="post" th:action="@{/user/update}">
         <input type="email" name="email" th:value="${email}" placeholder="Введите email">
         <input type="password" name="password"  placeholder="Введите password"><br>

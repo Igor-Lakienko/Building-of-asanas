@@ -24,6 +24,12 @@ public class User implements UserDetails {
     private Set<Asana> asanas = new HashSet<>();
 
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            mappedBy = "user")
+    private Set<UserAsanas> userAsanas = new HashSet<>();
+
+
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -51,6 +57,9 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { return getRoles(); }
 
+
+    public Set<UserAsanas> getUserAsanas() { return userAsanas; }
+    public void setUserAsanas(Set<UserAsanas> userAsanas) { this.userAsanas = userAsanas; }
 
     public Set<Asana> getAsanas() { return asanas; }
     public void setAsanas(Set<Asana> asanas) { this.asanas = asanas; }
