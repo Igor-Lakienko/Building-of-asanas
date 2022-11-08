@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Последовательность Асан</title>
+  <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div th:replace="layouts/header :: header"></div>
+
+
+<main class="container">
+  <div class="asanas">
+  <div th:each="el : ${asanas}" th:if="${!asanas.isEmpty()}">
+    <img th:src="${el.asanas.image}" th:alt="${el.asanas.title}"></a>
+    <h3 th:text="${el.asanas.title}" />
+  </div>
+  </div>
+
+
+</main>
+<div th:replace="layouts/footer :: footer"></div>
+
+
+</body>
+</html>
