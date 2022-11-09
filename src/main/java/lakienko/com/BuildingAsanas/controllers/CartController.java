@@ -5,14 +5,9 @@ import lakienko.com.BuildingAsanas.models.Asana;
 import lakienko.com.BuildingAsanas.models.User;
 import lakienko.com.BuildingAsanas.models.UserAsanas;
 import lakienko.com.BuildingAsanas.repositories.AsanaRepository;
-
 import lakienko.com.BuildingAsanas.repositories.UserAsanasRepository;
 import lakienko.com.BuildingAsanas.repositories.UserRepository;
-import lakienko.com.BuildingAsanas.service.UserAsanasServices;
-import lakienko.com.BuildingAsanas.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +15,15 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.security.Principal;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
 
 
 @Controller
-
 public class CartController {
+
+
 
     @Autowired
     private UserRepository userRepository;
@@ -34,27 +31,44 @@ public class CartController {
     private AsanaRepository asanaRepository;
     @Autowired
     private UserAsanasRepository userAsanasRepository;
-    @Autowired
-    private UserAsanasServices userAsanasServices;
 
 
+    @GetMapping("/cart-asanas")
+    public String userLoaded(Principal principal,Model model){
 
+        User user = userRepository.findByUsername(principal.getName());
+        Set<UserAsanas> user_asanas = user.getUserAsanas();
 
-   @GetMapping("/cart-asanas/{id}")
-    public String userReviews (@PathVariable(value = "id") long id, Model model) {
-
-       User user = userRepository.findById(id).orElse(new User());
-       System.out.println(user.getId());
-       System.out.println(user.getUsername());
-
-       Set<UserAsanas> asanas = user.getUserAsanas();
-       System.out.println(asanas);
-
-
-
-       model.addAttribute("asanas", asanas);
+        model.addAttribute("user_asanas", user_asanas);
 
         return "cart-asanas";
-
     }
+
+    @PostMapping("/cart-asanas/{id}/add")
+    public String addAsanaCartPost(@PathVariable(value = "id") long id,
+                                   Principal principal){
+
+        User userCurrent = userRepository.findByUsername(principal.getName());
+        Asana asanaCurrent = asanaRepository.findById(id).orElse(new Asana());
+
+        UserAsanas userAsanas = new UserAsanas();
+        userAsanas.setUser(userCurrent);
+        userAsanas.setAsana(asanaCurrent);
+
+        userAsanasRepository.save(userAsanas);
+
+        return "redirect:/cart-asanas/";
+    }
+
+//    public Set<UserAsanas> sort(Set<UserAsanas> list){
+//
+//        UserAsanas userAsanas = new UserAsanas();
+//        long array = userAsanas.getId();
+//
+//        for (int i = 0; i < array; i++) {
+//
+//        }
+//
+//    }
+
 }

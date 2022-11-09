@@ -37,20 +37,9 @@ public class CartsTests {
         newUserAsana.setUser(userRepository.findById(8L).orElse(new User()));
         newUserAsana.setAsana(asanaRepository.findById(1L).orElse(new Asana()));
 
-//        userAsanasRepository.save(newUserAsana);
+
 
         assert (newUserAsana.getId() > 0);
-
-    }
-
-    @Test
-    public void testGetCartAsanaByUser(){
-        User user = new User();
-        user.setId(8);
-
-        List<UserAsanas> cartAsana = userAsanasRepository.findByUser(user);
-
-        System.out.println(cartAsana);
 
     }
 

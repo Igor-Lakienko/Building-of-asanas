@@ -14,23 +14,19 @@
         <p>Here very cool!!!</p>
     </div>
 <main class="container">
+    <div >
+
+    </div>
     <div class="asana">
         <div th:each="el : ${asana}" th:if="${!asana.isEmpty()}">
             <a th:href="'/asana/' + ${el.id}"><img th:src="${el.image}" th:alt="${el.title}"></a>
             <h3 th:text="${el.title}" />
             <p th:text="${el.info}" />
 
-
-            <div>
-                <p><a  th:href="@{/cart-asanas/} + ${users.id}">Последовательности пользователя</a></p>
-            </div>
-<!--            <a th:href="@{/cart-asanas/8}" class="edit-btn">add</a>-->
-<!--            <form method="get" th:action="@{'/cart-asanas/' + '8'}">-->
-<!--                <button type="submit">Добавить</button>-->
-<!--            </form>-->
-
+          <form method="post" th:action="@{'/cart-asanas/' + ${el.id} + '/add'}">
+                <button type="submit">Добавить</button>
+            </form>
         </div>
-
     </div>
     <div th:if="${asana.isEmpty()}" class="block">
         <p>Нет Асан!!!</p>

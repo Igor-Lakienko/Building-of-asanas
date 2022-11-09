@@ -1,7 +1,7 @@
 package lakienko.com.BuildingAsanas.controllers;
 
-import lakienko.com.BuildingAsanas.models.Asana;
 import lakienko.com.BuildingAsanas.models.User;
+import lakienko.com.BuildingAsanas.models.UserAsanas;
 import lakienko.com.BuildingAsanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,13 +27,13 @@ public class AdminController {
 
 
     @GetMapping("/admin/user-{id}")
-    public String userReviews (@PathVariable(value = "id") long userId,Model model){
+    public String userReviews (@PathVariable(value = "id") long id,Model model){
 
-        User user = userRepository.findById(userId).orElse(new User());
-        Set<Asana> asanas = user.getAsanas();
+        User user = userRepository.findById(id).orElse(new User());
+        Set<UserAsanas> user_asanas = user.getUserAsanas();
 
         model.addAttribute("title", "Асаны пользователя: " + user.getUsername());
-        model.addAttribute("asanas", asanas);
+        model.addAttribute("user_asanas", user_asanas);
 
         return "user-asanas";
 
