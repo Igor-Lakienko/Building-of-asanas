@@ -15,22 +15,29 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 
 @Controller
 public class CartController {
 
 
+    UserAsanas userAsanas = new UserAsanas();
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private AsanaRepository asanaRepository;
+
     @Autowired
     private UserAsanasRepository userAsanasRepository;
+
+
+
+    public CartController() {
+    }
+
 
 
     @GetMapping("/cart-asanas")
@@ -44,6 +51,7 @@ public class CartController {
         return "cart-asanas";
     }
 
+
     @PostMapping("/cart-asanas/{id}/add")
     public String addAsanaCartPost(@PathVariable(value = "id") long id,
                                    Principal principal){
@@ -51,7 +59,7 @@ public class CartController {
         User userCurrent = userRepository.findByUsername(principal.getName());
         Asana asanaCurrent = asanaRepository.findById(id).orElse(new Asana());
 
-        UserAsanas userAsanas = new UserAsanas();
+        userAsanas = new UserAsanas();
         userAsanas.setUser(userCurrent);
         userAsanas.setAsana(asanaCurrent);
 
@@ -60,15 +68,14 @@ public class CartController {
         return "redirect:/cart-asanas/";
     }
 
-//    public Set<UserAsanas> sort(Set<UserAsanas> list){
-//
-//        UserAsanas userAsanas = new UserAsanas();
-//        long array = userAsanas.getId();
-//
-//        for (int i = 0; i < array; i++) {
-//
-//        }
-//
-//    }
+
+    @PostMapping("/cart-asanas/{id}/delete")
+    public String deleteCurrentAsana(@PathVariable(value = "id") long id) {
+
+        UserAsanas userAsanas = userAsanasRepository.findById(id).orElse(new UserAsanas());
+        userAsanasRepository.deleteById(id);
+
+        return "redirect:/cart-asanas/";
+    }
 
 }

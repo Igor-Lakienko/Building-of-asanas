@@ -4,9 +4,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 
 @Entity
 @Table(name = "users")
@@ -18,16 +17,12 @@ public class User implements UserDetails {
     private String username,password,email;
     private boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL,
-                fetch = FetchType.EAGER,
-                mappedBy = "user")
-    private Set<Asana> asanas = new HashSet<>();
 
-
+    @OrderBy
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER,
             mappedBy = "user")
-    private Set<UserAsanas> userAsanas = new HashSet<>();
+    private Set<UserAsanas> userAsanas = new HashSet<>() ;
 
 
 
@@ -61,9 +56,6 @@ public class User implements UserDetails {
     public Set<UserAsanas> getUserAsanas() { return userAsanas; }
     public void setUserAsanas(Set<UserAsanas> userAsanas) { this.userAsanas = userAsanas; }
 
-    public Set<Asana> getAsanas() { return asanas; }
-    public void setAsanas(Set<Asana> asanas) { this.asanas = asanas; }
-
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
@@ -89,5 +81,16 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) { this.roles = roles; }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

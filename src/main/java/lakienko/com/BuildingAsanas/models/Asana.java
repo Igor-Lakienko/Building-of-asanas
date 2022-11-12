@@ -1,6 +1,7 @@
 package lakienko.com.BuildingAsanas.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity
@@ -50,4 +51,18 @@ public class Asana {
 
     public String getFullInfo() { return fullInfo; }
     public void setFullInfo(String fullInfo) { this.fullInfo = fullInfo; }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Asana asana = (Asana) o;
+        return id == asana.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

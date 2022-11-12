@@ -21,9 +21,11 @@
   <br><br>
   <a th:href="'/asana/' + ${asana.id} + '/update'" class="edit-btn" sec:authorize="hasAuthority('REDACTOR')
  || hasAuthority('ADMIN')">Редактировать</a>
+
   <form method="post" th:action="@{'/asana/' + ${asana.id} + '/delete'}" sec:authorize="hasAuthority('ADMIN')">
     <button type="submit">Удалить</button>
   </form>
+
 </main>
 
 <div th:replace="layouts/footer :: footer"></div>

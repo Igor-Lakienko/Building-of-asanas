@@ -4,7 +4,7 @@ package lakienko.com.BuildingAsanas.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_asanas")
+//@Table(name = "user_asanas")
 public class UserAsanas {
 
     @Id
@@ -30,4 +30,12 @@ public class UserAsanas {
     public Asana getAsana() { return asana;}
     public void setAsana(Asana asana) { this.asana = asana; }
 
+    @Override
+    public String toString() {
+        return "UserAsanas{" +
+                "id=" + id +
+                ", user=" + user +
+                ", asana=" + asana +
+                '}';
+    }
 }
