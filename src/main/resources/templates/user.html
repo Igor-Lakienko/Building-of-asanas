@@ -21,12 +21,12 @@
         <input type="password" name="password"  placeholder="Введите password"><br>
         <div class="error" th:text="${error}"></div>
         <br>
-        <select name="roles">
-            <option value="USER">Пользователь</option>
-            <option value="ADMIN">Администратор</option>
-            <option value="REDACTOR">Редактор</option>
-        </select>
-        <br>
+<!--        <select name="roles">-->
+<!--            <option value="USER">Пользователь</option>-->
+<!--            <option value="ADMIN">Администратор</option>-->
+<!--            <option value="REDACTOR">Редактор</option>-->
+<!--        </select>-->
+<!--        <br>-->
         <button type="submit">Обновить данные</button>
     </form>
     <form method="post" th:action="@{/logout}">

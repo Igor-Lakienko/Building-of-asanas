@@ -24,12 +24,32 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
+    //Доделать проблему с отображением ошибки...
     @GetMapping("/login")
-    public String login() { return "login"; }
+    public String login(@RequestParam(name = "error", defaultValue = "", required = true) String error, Model model) {
+
+        if (error.equals("error")){
+            model.addAttribute("error","Поля не должны быть пустыми!");
+        }
+
+        return "login";
+    }
+
+
+    @PostMapping("/login")
+    public String loginCheck(@RequestParam String username,
+                             @RequestParam String password
+    ){
+
+        if(username.length() < 1 || password.length() < 1)
+            return "redirect:/login?error=error";
+
+        return "redirect:/login";
+    }
 
 
     @GetMapping("/user")
-    public String user(@RequestParam(name = "error", defaultValue = "",required = false)
+    public String user(@RequestParam(name = "error", defaultValue = "", required = false)
                            String error, Principal principal, Model model){
 
          User user = userRepository.findByUsername(principal.getName());
@@ -61,7 +81,6 @@ public class UserController {
 
 
 
-
     @GetMapping("/reg")
     public String reg(@RequestParam(name = "error", defaultValue = "", required = false) String error, Model model) {
 
@@ -90,7 +109,7 @@ public class UserController {
         if (username.length() < 1 || email.length() < 1 || password.length() < 1)
             return "redirect:/reg?error=password";
         else
-        userRepository.save(user);
+            userRepository.save(user);
 
 
         return "redirect:/login";
