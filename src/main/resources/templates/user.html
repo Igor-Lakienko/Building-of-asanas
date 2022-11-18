@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Кабинет Пользователя</title>
-    <link rel="stylesheet" th:href="@{/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
 
 <main class="container">
 
-    <h1>Кабинет Пользователя</h1>
-    <br><br>
-    <br>
+    <h1>Кабинет Пользователя</h1><br>
     <h2>Изменить данные</h2>
-    <p>Привет, <span sec:authentication="name"/></p>
-    <form method="post" th:action="@{/user/update}">
+    <h4>Привет, <span sec:authentication="name"></span></h4>
+
+    <form class="form" method="post" th:action="@{/user/update}">
         <input type="email" name="email" th:value="${email}" placeholder="Введите email">
         <input type="password" name="password"  placeholder="Введите password"><br>
         <div class="error" th:text="${error}"></div>
@@ -27,10 +27,10 @@
 <!--            <option value="REDACTOR">Редактор</option>-->
 <!--        </select>-->
 <!--        <br>-->
-        <button type="submit">Обновить данные</button>
+        <button class="button" type="submit">Обновить данные</button>
     </form>
-    <form method="post" th:action="@{/logout}">
-        <button type="submit">Выйти</button>
+    <form class="form" method="post" th:action="@{/logout}">
+        <button class="button" type="submit">Выйти</button>
     </form>
 
 </main>

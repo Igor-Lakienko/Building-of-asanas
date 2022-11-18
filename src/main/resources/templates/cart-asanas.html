@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Последовательность Асан</title>
-  <link rel="stylesheet" th:href="@{/main.css}">
+  <link rel="stylesheet" th:href="@{/styles/main.css}">
+
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
@@ -16,11 +17,9 @@
     <img th:src="${el.asana.image}" th:alt="${el.asana.title}"/>
     <h3 th:text="${el.asana.title}" />
 
-    <form method="post" th:action="@{'/cart-asanas/' + ${el.id} + '/delete'}">
-      <button type="submit">
-        <a>
-          <img src="https://cdn4.iconfinder.com/data/icons/multimedia-75/512/multimedia-39-512.png">
-        </a>
+    <form  method="post" th:action="@{'/cart-asanas/' + ${el.id} + '/delete'}" >
+      <button class="icon" type="submit">
+          <img th:src="@{/icon/basket.png}">
       </button>
     </form>
 

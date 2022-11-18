@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Панель Администратора</title>
-    <link rel="stylesheet" th:href="@{/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
@@ -14,7 +15,7 @@
         <div class="block" th:each="user : ${users}">
            <h1 th:text="'Пользователь: ' + ${user.username}"/><br>
             <p th:text="'Email: ' + ${user.email} + '. Роль на сайте: ' + ${user.roles[0]} "/><br>
-            <p><a  th:href="@{/admin/user-} + ${user.id}">Последовательности пользователя</a></p>
+            <p><a class="button" th:href="@{/admin/user-} + ${user.id}">Последовательности пользователя</a></p>
         </div>
     </div>
 

@@ -3,8 +3,8 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
-  <title th:text="${asana.title}"/>
-  <link rel="stylesheet" th:href="@{/main.css}">
+  <title th:text="${asana.title}"></title>
+  <link rel="stylesheet" th:href="@{/styles/main.css}">
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
@@ -12,18 +12,19 @@
   <div class="asana">
     <div>
       <img th:src="${asana.image}" th:alt="${asana.title}"/><br>
-      <h3 th:text="${asana.title}" /><br>
-      <p th:text="${asana.info}" /><br><br>
+      <h3 th:text="${asana.title}"></h3><br>
+      <p th:text="${asana.info}"></p><br><br>
       <h3 th:text="${asana.fullInfo}"></h3><br><br><br>
-      <p>Автор: <b th:text="${asana.user.username}"/></p>
+      <p>Автор: <b th:text="${asana.user.username}"></b></p>
     </div>
   </div>
   <br><br>
-  <a th:href="'/asana/' + ${asana.id} + '/update'" class="edit-btn" sec:authorize="hasAuthority('REDACTOR')
- || hasAuthority('ADMIN')">Редактировать</a>
+  <a th:href="'/asana/' + ${asana.id} + '/update'" class="edit-btn"
+     sec:authorize="hasAuthority('REDACTOR') || hasAuthority('ADMIN')">Редактировать</a>
 
-  <form method="post" th:action="@{'/asana/' + ${asana.id} + '/delete'}" sec:authorize="hasAuthority('ADMIN')">
-    <button type="submit">Удалить</button>
+  <form class="form" method="post" th:action="@{'/asana/' + ${asana.id} + '/delete'}"
+     sec:authorize="hasAuthority('ADMIN')">
+    <button class="button" type="submit">Удалить</button>
   </form>
 
 </main>

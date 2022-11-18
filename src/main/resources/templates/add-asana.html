@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить Асану</title>
-    <link rel="stylesheet" th:href="@{/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
 </head>
 <body>
 <div th:replace="layouts/header :: header"></div>
@@ -11,13 +11,13 @@
 <main class="container">
 
     <h1>Добавить Асану</h1>
-    <form method="post" th:action="@{/asana/add}">
+    <form class="form" method="post" th:action="@{/asana/add}">
         <input type="text" name="title" placeholder="Введите название Ассаны">
-        <input type="text" name="image" placeholder="Введите URL Фото">
+        <input type="url" name="image" placeholder="Введите URL Asana">
         <textarea name="info" placeholder="Введите описание"></textarea>
         <textarea name="fullInfo" placeholder="Введите полное описание"></textarea><br>
         <div class="error" th:text="${error}"></div>
-        <button type="submit">Добавить</button>
+        <button class="button" type="submit">Добавить</button>
     </form>
 
 </main>

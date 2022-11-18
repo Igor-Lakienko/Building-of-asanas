@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap'); 
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    width: 100%;
+}
+
+body{
+    background-color: rgb(178, 172, 171);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 130px;
+    padding: 15px;
+}
+
+.header{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+header .logo img{
+    width: 130px;
+    height: 119px;
+}
+
+header nav a{
+    font-size: 19px;
+    color: rgb(67, 99, 64);
+    margin-left: 20px;
+    transition: color 500ms ease;
+    text-decoration: none;
+    position: relative;
+    top: 80px;
+    
+}
+
+header nav a:hover{
+    color: rgb(195, 248, 248);
+    border: 2px solid rgb(195, 248, 248);
+    border-radius: 20px;
+    padding: 0 5px ;
+
+
+}
+
+
+/* div.block{
+    width: 100%;
+    padding: 20px;
+    /* border: 1px solid rgb(94, 75, 75); */
+    /* border-bottom-width: 2px; */
+    /* background: rgb(202, 227, 224); */
+    /* line-height: 100%;  */
+/* } */
+
+
+.presentation{
+    float: left;
+    width: 100%;
+    background:rgb(77, 77, 60);
+    padding: 50px 100px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.presentation h2 {
+    color: aliceblue;
+    font-size: 35px;
+    padding-top: 90px;
+}
+
+.presentation p{
+    color: thistle;
+    font-size: 54px;
+    padding-top: 7px;
+    max-width: 380px;
+}
+.presentation img{
+    float: right;
+    width: 300px;
+    position: relative;
+    top: 58px;
+} 
+
+.asana{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: max-content;
+    float: left;
+}
+
+
+.asana > div{
+    justify-content: flex-start;
+    width: 328px;
+    height: 600px;
+    margin-bottom: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+    background: indianred;
+    padding: 1px;
+    box-sizing: content-box;
+}
+
+.asana > div a img{
+    max-width: 100%;
+    height: 250px;
+    max-height: 250px;
+}
+
+
+.asana > div h3 {
+    max-width: max-content;
+    color: rgb(201, 248, 154);
+    padding: 5px;
+    margin: 7 px 0 ;
+    font-size: 25px;
+    text-decoration: underline whitesmoke;
+}
+
+
+.asana > div p{
+    max-width: max-content;
+    color: beige;
+    padding: 5px;
+}
+
+.asana > div form button img{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: indianred;
+}
+
+.icon {
+    float: right;
+    background-color: indianred;
+    border: 1px solid indianred;    
+}
+
+
+/* .fullInfo > p{
+    font-size: 50px;
+} */
+
+.button, .edit-btn{
+    padding: 10px 25px;
+    border-radius:5px;
+    color: antiquewhite;
+    border: 0;
+    cursor: pointer;
+    transition: background 500ms ease ;
+    background: rgb(38, 83, 40);
+}
+
+.form{
+    padding: 25px 30px;
+    margin-left: 100px;
+    margin-top: -10px;
+
+
+}
+.form input{
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid rgb(241, 220, 220);
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    resize: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+.form textarea {
+    width: 400px;
+    height: 250px;
+    border-radius: 5px;
+    border: 1px solid rgb(241, 220, 220);
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    resize: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+.container h1{
+    color: cornflowerblue;
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+.container h2{
+    font-size: 25px;
+    padding: 25px 30px;
+    margin-left: 100px;
+}
+
+.container h4{
+    padding: 25px 30px;
+    margin-left: 100px;
+}
+
+.container > h4 span{
+    font-size: 19px;
+    color: rgb(15, 66, 15);
+}
+
+.error{
+    font-family: 'Montserrat', sans-serif ;
+    color: rgb(164, 30, 3);
+    font-size: 20px;
+}
+
+
+footer{
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+
+
