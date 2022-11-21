@@ -12,17 +12,24 @@
 <main class="container">
     <div sec:authorize="hasAuthority('ADMIN')">
         <h1>Все пользователи</h1>
-        <div class="block" th:each="user : ${users}">
-           <h1 th:text="'Пользователь: ' + ${user.username}"/><br>
-            <p th:text="'Email: ' + ${user.email} + '. Роль на сайте: ' + ${user.roles[0]} "/><br>
-            <p><a class="button" th:href="@{/admin/user-} + ${user.id}">Последовательности пользователя</a></p>
+        <div class="block-admin" th:each="user : ${users}">
+           <h1>Пользователь: <span th:text="${user.username}"></span></h1><br>
+            <h3>Роль на сайте: <span th:text="${user.roles[0]} "></span></h3>
+            <h3>Email: <span th:text="${user.email}"></span></h3><br>
+            <a th:href="@{/admin/user-} + ${user.id}">Асаны пользователя</a>
         </div>
     </div>
 
     <div sec:authorize="!hasAuthority('ADMIN')">
         <div class="block">
-            <h3>Доступ запрещен</h3><br>
-            <p>Эта страница доступна только Администраторам</p>
+            <h3>Доступ запрещен!</h3><br>
+            <p>Эта страница доступна только Администраторам!</p>
+              <span class="logo">
+                 <a href="/">
+                 <img src="https://cdn1.iconfinder.com/data/icons/cat-yoga-pose-and-asana-meditation-zen-namaste/100/pose11-512.png" alt="">
+                 </a>
+              </span>
+            <p>нажмите на котика, чтобы вернуться на главную страницу</p>
         </div>
     </div>
 

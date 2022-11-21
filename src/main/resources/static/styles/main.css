@@ -9,12 +9,219 @@ img{
     width: 100%;
 }
 
+.asana, .cartAsana, .showAsana {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: max-content;
+    float: left;
+}
+
+
+.asana > div, .cartAsana > div {
+    justify-content: flex-start;
+    width: 328px;
+    height: 600px;
+    margin-bottom: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+    background: indianred;
+    padding: 1px;
+    box-sizing: content-box;
+}
+
+.asana > div a img, .cartAsana > div img{
+    max-width: 100%;
+    height: 250px;
+    max-height: 250px;
+}
+
+
+.asana > div h3, .cartAsana > div h3{
+    max-width: max-content;
+    color: rgb(201, 248, 154);
+    padding: 5px;
+    margin: 7 px 0 ;
+    font-size: 25px;
+    text-decoration: underline whitesmoke;
+}
+
+.asana > div p{
+    max-width: max-content;
+    color: beige;
+    padding: 5px;
+}
+
+.asana > div form button img, .cartAsana > div form button img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: indianred;
+}
+
+.cartAsanaComment div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: max-content;
+    float: left;
+    border: 2px solid rgb(18, 17, 17);
+}
+
+.cartAsanaComment  h4{
+    padding: 30px 5px;
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: left;
+    background: rgb(173, 171, 173);
+    width: 100%;
+    border: 2px solid rgb(18, 17, 17);
+
+}
+
+.cartAsanaComment  a{
+    border: 2px solid rgb(18, 17, 17);
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-left: 45%;
+    position: relative;
+    top: 10px;
+    text-decoration: none;
+    width: 100%;
+    background: rgb(127, 241, 136);
+    color: rgb(10, 11, 11);
+}
+
+
 body{
     background-color: rgb(178, 172, 171);
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
 }
 
+.block {
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid rgb(18, 17, 17);
+    border-bottom-width: 2px;
+    background: rgb(210, 218, 217);
+    line-height: 100%; 
+    text-align: center;
+}
+
+.block h1 {
+    margin-top: 20px;
+    padding: 10px;
+
+}
+
+.block h3{
+    padding-top: 20px;
+    color: rgb(242, 67, 67);
+    font-size: 34px;
+}
+
+.block h4{
+    font-size: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.block p{
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+.block-admin {
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 20px 20px;
+    width: 30%;
+    border: 2px solid rgb(18, 17, 17);
+    background: rgb(210, 218, 217);
+}
+
+.block-admin h1{
+    color: coral;
+    padding: 10px 10px;
+}
+
+.block-admin h3{
+    padding: 10px 10px;
+    color: rgb(18, 19, 16);
+}
+
+.block-admin span{
+    padding: 10px 0px;
+    color: rgb(111, 158, 17);
+}
+
+.block-admin a {
+    padding: 10px 25px;
+    border-radius:15px;
+    color: rgb(247, 218, 181);
+    border: 0;
+    cursor: pointer;
+    transition: background 500ms ease ;
+    background: rgb(36, 93, 36);
+}
+
+.block-admin a:hover{
+    color: rgb(132, 132, 0);
+    background: rgb(34, 50, 0);
+}
+
+
+.form{
+    padding: 25px 30px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
+.form h1 {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.form input{
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid rgb(241, 220, 220);
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    resize: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+.form textarea {
+    width: 400px;
+    height: 250px;
+    border-radius: 5px;
+    border: 1px solid rgb(241, 220, 220);
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    resize: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+
+.cartAsana > div{
+    margin-top: 50px;
+    height: 390px; 
+}
+
+.icon {
+    float: right;
+    background-color: indianred;
+    border: 1px solid indianred;    
+}
 
 
 header{
@@ -28,11 +235,6 @@ header{
 .header{
     box-sizing: border-box;
     width: 100%;
-}
-
-header .logo img{
-    width: 130px;
-    height: 119px;
 }
 
 header nav a{
@@ -51,20 +253,50 @@ header nav a:hover{
     border: 2px solid rgb(195, 248, 248);
     border-radius: 20px;
     padding: 0 5px ;
-
-
 }
 
 
-/* div.block{
-    width: 100%;
-    padding: 20px;
-    /* border: 1px solid rgb(94, 75, 75); */
-    /* border-bottom-width: 2px; */
-    /* background: rgb(202, 227, 224); */
-    /* line-height: 100%;  */
-/* } */
+.button, .edit-btn{
+    padding: 10px 25px;
+    border-radius:5px;
+    color: antiquewhite;
+    border: 0;
+    cursor: pointer;
+    transition: background 500ms ease ;
+    background: rgb(38, 83, 40);
+}
 
+.login-form h1{
+    color: cornflowerblue;
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+.login-form h2{
+    font-size: 25px;
+    padding: 15px 30px;
+    margin-left: 100px;
+}
+
+.login-form h4{
+    padding: 10px 30px;
+    margin-left: 100px;
+}
+
+.login-form span{
+    font-size: 22px;
+    color: rgb(23, 135, 23);
+}
+
+.logo img{
+    width: 130px;
+    height: 119px;
+}
+
+.logo img {
+    width: 130px;
+    height: 119px;
+}
 
 .presentation{
     float: left;
@@ -94,69 +326,86 @@ header nav a:hover{
     top: 58px;
 } 
 
-.asana{
-    display: flex;
-    flex-wrap: wrap;
+
+/* .showAsana div {
+    /* justify-content: flex-start;
     width: 100%;
     height: max-content;
-    float: left;
-}
+    background: yellow; */
+/* } */ 
 
-
-.asana > div{
-    justify-content: flex-start;
-    width: 328px;
+.showAsana div img {
+    margin-top: 50px;
+    margin-left: 450px;
+    border: 2px solid thistle;
+    width: 800px;
     height: 600px;
-    margin-bottom: 50px;
-    margin-left: 25px;
-    margin-right: 25px;
-    background: indianred;
-    padding: 1px;
+}
+.showAsana div h3 {
+    justify-content: flex-start;
+    max-width: 805px;
+    font-size: 36px;
+    text-decoration-line: underline ;
+    color: rgb(20, 13, 20);
+    margin-left: 450px;
+    max-height: max-content;
     box-sizing: content-box;
 }
 
-.asana > div a img{
-    max-width: 100%;
-    height: 250px;
-    max-height: 250px;
+.showAsana div h4{
+    justify-content: flex-start;
+    /* background: aquamarine; */
+    max-height: max-content;
+    box-sizing: content-box;
+    font-size: 24px;
+    margin-left: 25px;
+    margin-top: 40px;
 }
 
-
-.asana > div h3 {
-    max-width: max-content;
-    color: rgb(201, 248, 154);
-    padding: 5px;
-    margin: 7 px 0 ;
-    font-size: 25px;
-    text-decoration: underline whitesmoke;
+.showAsana div p{
+    justify-content: flex-start;
+    max-height: max-content;
+    box-sizing: content-box;
+    font-size: 18px;
+    margin-left: 25px;
+    margin-right: 25px;
+    /* background: violet; */
+    margin-top: 40px;
 }
 
-
-.asana > div p{
-    max-width: max-content;
-    color: beige;
-    padding: 5px;
+.showAsana div h2 { 
+    margin-left: 25px;
+    margin-top: 50px;
+    font-size: 32px;
+    color: black;
 }
 
-.asana > div form button img{
-    width: 60px;
-    height: 60px;
+.showAsana div h2 b{
+    font-size: 29px;
+    color: cadetblue;
+}
+
+.showAsana a ,.showAsana form button {
+    margin-left: 25px;
+    margin-top: 10px;
+    padding: 10px 25px;
+    border-radius:5px;
+    color: antiquewhite;
+    border: 0;
     cursor: pointer;
-    background: indianred;
+    text-decoration: none;
+    transition: background 500ms ease ;
+    background: rgb(38, 83, 40);
 }
 
-.icon {
-    float: right;
-    background-color: indianred;
-    border: 1px solid indianred;    
+.showAsana a:hover{
+    background: cadetblue;
+    color: brown;
 }
 
-
-/* .fullInfo > p{
-    font-size: 50px;
-} */
-
-.button, .edit-btn{
+/* .showAsana form button {
+    margin-left: 25px;
+    margin-top: 10px;
     padding: 10px 25px;
     border-radius:5px;
     color: antiquewhite;
@@ -164,66 +413,13 @@ header nav a:hover{
     cursor: pointer;
     transition: background 500ms ease ;
     background: rgb(38, 83, 40);
-}
-
-.form{
-    padding: 25px 30px;
-    margin-left: 100px;
-    margin-top: -10px;
-
-
-}
-.form input{
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid rgb(241, 220, 220);
-    font-size: 15px;
-    font-family: 'Montserrat', sans-serif;
-    display: block;
-    resize: none;
-    padding: 10px 15px;
-    margin-top: 20px;
-}
-
-.form textarea {
-    width: 400px;
-    height: 250px;
-    border-radius: 5px;
-    border: 1px solid rgb(241, 220, 220);
-    font-size: 15px;
-    font-family: 'Montserrat', sans-serif;
-    display: block;
-    resize: none;
-    padding: 10px 15px;
-    margin-top: 20px;
-}
-
-.container h1{
-    color: cornflowerblue;
-    margin-top: 20px;
-    margin-left: 130px;
-}
-
-.container h2{
-    font-size: 25px;
-    padding: 25px 30px;
-    margin-left: 100px;
-}
-
-.container h4{
-    padding: 25px 30px;
-    margin-left: 100px;
-}
-
-.container > h4 span{
-    font-size: 19px;
-    color: rgb(15, 66, 15);
-}
+} */
 
 .error{
     font-family: 'Montserrat', sans-serif ;
     color: rgb(164, 30, 3);
     font-size: 20px;
+    padding-bottom: 10px;
 }
 
 

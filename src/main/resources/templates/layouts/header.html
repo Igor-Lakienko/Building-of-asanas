@@ -10,8 +10,6 @@
 
     <nav>
         <a href="/">Главная страница</a>
-        <a href="/about-us">О Нас</a>
-
 
         <span sec:authorize="!isAuthenticated()">
             <a href="/reg">Регистрация</a>
@@ -19,13 +17,16 @@
          </span>
 
         <span sec:authorize="isAuthenticated()">
+            <a href="/cart-asanas/">Мои асаны</a>
             <a href="/user">Кабинет Пользователя</a>
             <a href="/asana/add">Добавить Ассану</a>
-            <a href="/cart-asanas/">Мои асаны</a>
          </span>
 
         <span sec:authorize="hasAuthority('ADMIN')">  
         <a href="/admin">Панель админа</a>
         </span>
+
+        <a href="/about-us">О Нас</a>
+
     </nav>
 </header>

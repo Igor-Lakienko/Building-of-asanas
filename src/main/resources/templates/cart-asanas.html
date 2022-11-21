@@ -12,10 +12,17 @@
 
 <main class="container">
 
-  <div class="asana">
+  <div class="cartAsanaComment">
+    <h4 th:text="${user_comment}"></h4>
+    <a href="/cart-asanas/user-comment">Редактировать</a><br><br><br>
+    <br><br><br>
+  </div>
+
+
+  <div class="cartAsana">
   <div th:each="el : ${user_asanas}" th:if="${!user_asanas.isEmpty()}">
     <img th:src="${el.asana.image}" th:alt="${el.asana.title}"/>
-    <h3 th:text="${el.asana.title}" />
+    <h3 th:text="${el.asana.title}"></h3>
 
     <form  method="post" th:action="@{'/cart-asanas/' + ${el.id} + '/delete'}" >
       <button class="icon" type="submit">

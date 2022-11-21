@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeHttpRequests()
                     .antMatchers("/asana/add","/cart-asanas/**","/asana/*/update",
-                            "/asana/*/delete","/user")
+                            "/asana/*/delete","/user","/admin/user-**")
                     .authenticated()
                     .antMatchers("/**").permitAll()
                     .anyRequest()

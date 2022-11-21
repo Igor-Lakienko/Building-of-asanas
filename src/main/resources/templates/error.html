@@ -11,11 +11,15 @@
 <div th:replace="layouts/header :: header"></div>
 
 <main class="container">
-
-  <h1>Что-то пошло не так!! :(</h1>
-  <p>Вернитесь на главную страницу</p>
-  <a href="/">главная</a>
-
+  <div class="block">
+      <h1>Что-то пошло не так!! :(</h1>
+    <span class="logo">
+                 <a href="/">
+                 <img src="https://cdn1.iconfinder.com/data/icons/cat-yoga-pose-and-asana-meditation-zen-namaste/100/pose11-512.png" alt="">
+                 </a>
+              </span>
+    <p>нажмите на котика, чтобы вернуться на главную страницу</p>
+  </div>
 </main>
 <div th:replace="layouts/footer :: footer"></div>
 

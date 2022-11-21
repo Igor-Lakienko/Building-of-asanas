@@ -26,7 +26,7 @@ public class UserController {
 
     //Доделать проблему с отображением ошибки...
     @GetMapping("/login")
-    public String login(@RequestParam(name = "error", defaultValue = "", required = true) String error, Model model) {
+    public String login(@RequestParam(name = "error", defaultValue = "", required = false) String error, Model model) {
 
         if (error.equals("error")){
             model.addAttribute("error","Поля не должны быть пустыми!");
@@ -34,6 +34,7 @@ public class UserController {
 
         return "login";
     }
+
 
 
     @PostMapping("/login")
@@ -53,6 +54,7 @@ public class UserController {
                            String error, Principal principal, Model model){
 
          User user = userRepository.findByUsername(principal.getName());
+         model.addAttribute("password", user.getPassword());
          model.addAttribute("email", user.getEmail());
 
         if (error.equals("password"))
@@ -68,7 +70,6 @@ public class UserController {
         User user = userRepository.findByUsername(principal.getName());
         user.setEmail(userForm.getEmail());
         String pass = passwordEncoder.encode(userForm.getPassword());
-        user.setRoles(userForm.getRoles());
         user.setPassword(pass);
 
         if (userForm.getPassword().length() < 1 || userForm.getEmail().length() < 1)
@@ -104,7 +105,8 @@ public class UserController {
             return "redirect:/reg?error=username";
 
         password = passwordEncoder.encode(password);
-        User user = new User(username,password,email, true, Collections.singleton(Role.USER));
+        User user = new User(username,password,email, true, Collections.singleton(Role.USER),
+                "Здесь вы можете оставить свой комментарий к уроку.");
 
         if (username.length() < 1 || email.length() < 1 || password.length() < 1)
             return "redirect:/reg?error=password";

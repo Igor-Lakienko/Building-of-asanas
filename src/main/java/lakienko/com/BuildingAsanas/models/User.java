@@ -14,7 +14,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String username,password,email;
+    private String username,password,email,comment;
     private boolean enabled;
 
 
@@ -33,12 +33,13 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(String username, String password, String email, boolean enabled, Set<Role> roles) {
+    public User(String username, String password, String email, boolean enabled, Set<Role> roles, String comment) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.enabled = enabled;
         this.roles = roles;
+        this.comment = comment;
     }
 
     @Override
@@ -80,6 +81,8 @@ public class User implements UserDetails {
     public Set<Role> getRoles() { return roles; }
     public void setRoles(Set<Role> roles) { this.roles = roles; }
 
+    public String getComment() { return comment; }
+    public void setComment(String comment) { this.comment = comment; }
 
     @Override
     public boolean equals(Object o) {

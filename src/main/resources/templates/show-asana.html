@@ -9,24 +9,24 @@
 <body>
 <div th:replace="layouts/header :: header"></div>
 <main class="container">
-  <div class="asana">
+  <div class="showAsana">
     <div>
-      <img th:src="${asana.image}" th:alt="${asana.title}"/><br>
-      <h3 th:text="${asana.title}"></h3><br>
-      <p th:text="${asana.info}"></p><br><br>
-      <h3 th:text="${asana.fullInfo}"></h3><br><br><br>
-      <p>Автор: <b th:text="${asana.user.username}"></b></p>
+      <img th:src="${asana.image}" th:alt="${asana.title}"/>
+      <h3 th:text="${asana.title}"></h3>
+      <h4 th:text="${asana.info}"></h4>
+      <p th:text="${asana.fullInfo}"></p>
+      <h2>Автор: <b th:text="${asana.user.username}"></b></h2>
     </div>
   </div>
-  <br><br>
-  <a th:href="'/asana/' + ${asana.id} + '/update'" class="edit-btn"
+  <div class="showAsana">
+  <a th:href="'/asana/' + ${asana.id} + '/update'"
      sec:authorize="hasAuthority('REDACTOR') || hasAuthority('ADMIN')">Редактировать</a>
 
-  <form class="form" method="post" th:action="@{'/asana/' + ${asana.id} + '/delete'}"
+  <form class="showAsana" method="post" th:action="@{'/asana/' + ${asana.id} + '/delete'}"
      sec:authorize="hasAuthority('ADMIN')">
-    <button class="button" type="submit">Удалить</button>
+    <button type="submit">Удалить</button>
   </form>
-
+  </div>
 </main>
 
 <div th:replace="layouts/footer :: footer"></div>

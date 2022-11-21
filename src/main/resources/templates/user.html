@@ -11,28 +11,21 @@
 <div th:replace="layouts/header :: header"></div>
 
 <main class="container">
-
-    <h1>Кабинет Пользователя</h1><br>
+    <div class="login-form">
+    <h1>Кабинет Пользователя</h1>
     <h2>Изменить данные</h2>
     <h4>Привет, <span sec:authentication="name"></span></h4>
-
+    </div>
     <form class="form" method="post" th:action="@{/user/update}">
         <input type="email" name="email" th:value="${email}" placeholder="Введите email">
-        <input type="password" name="password"  placeholder="Введите password"><br>
+        <input type="password" name="password" placeholder="Введите password"><br>
         <div class="error" th:text="${error}"></div>
-        <br>
-<!--        <select name="roles">-->
-<!--            <option value="USER">Пользователь</option>-->
-<!--            <option value="ADMIN">Администратор</option>-->
-<!--            <option value="REDACTOR">Редактор</option>-->
-<!--        </select>-->
-<!--        <br>-->
+
         <button class="button" type="submit">Обновить данные</button>
     </form>
     <form class="form" method="post" th:action="@{/logout}">
         <button class="button" type="submit">Выйти</button>
     </form>
-
 </main>
 <div th:replace="layouts/footer :: footer"></div>
 
