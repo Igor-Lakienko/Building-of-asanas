@@ -37,8 +37,6 @@ public class CartsTests {
         newUserAsana.setUser(userRepository.findById(8L).orElse(new User()));
         newUserAsana.setAsana(asanaRepository.findById(1L).orElse(new Asana()));
 
-
-
         assert (newUserAsana.getId() > 0);
 
     }

@@ -11,11 +11,13 @@
 
 <main class="container">
 
-    <h1>Редактировать Асану</h1>
     <form class="form" method="post" th:action="@{'/asana/' + ${asana.id} + '/update'}">
+        <h1>Редактировать Асану</h1>
         <input type="text" name="title" th:value="${asana.title}" placeholder="Введите название Ассаны">
         <input type="text" name="image" th:value="${asana.image}" placeholder="Введите URL Фото">
         <textarea name="info" placeholder="Введите описание" th:text="${asana.info}"></textarea>
+        <textarea name="positiveEffects" placeholder="Введите положительные эффекты" th:text="${asana.positiveEffects}"></textarea>
+        <textarea name="negativeEffects" placeholder="Введите отрицательные эффекты" th:text="${asana.negativeEffects}"></textarea>
         <textarea name="fullInfo" placeholder="Введите полное описание" th:text="${asana.fullInfo}"></textarea><br>
         <div class="error" th:text="${error}"></div>
         <button class="button" type="submit">Редактировать</button>

@@ -11,7 +11,7 @@ public class Asana {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String title,info,image,fullInfo;
+    private String title, info, image, fullInfo, positiveEffects, negativeEffects;
 
     @JoinColumn(name = "user_id")
     @OneToOne(fetch = FetchType.EAGER)
@@ -19,18 +19,28 @@ public class Asana {
 
 
     public Asana() {}
-    public Asana(String title, String info, String image, String fullInfo, User user) {
+    public Asana(String title, String info, String image, String fullInfo,
+                 User user,String positiveEffects, String negativeEffects) {
         this.title = title;
         this.info = info;
         this.image = image;
         this.fullInfo = fullInfo;
         this.user = user;
-
+        this.positiveEffects = positiveEffects;
+        this.negativeEffects = negativeEffects;
     }
 
 
     public long getId() { return id;}
-    public void setId(long id) {this.id = id;}
+    public void setId(long id) {this.id = id; }
+
+
+    public String getPositiveEffects() {return positiveEffects;}
+    public void setPositiveEffects(String positiveEffects) {this.positiveEffects = positiveEffects; }
+
+
+    public String getNegativeEffects() {return negativeEffects;}
+    public void setNegativeEffects(String negativeEffects) {this.negativeEffects = negativeEffects; }
 
 
     public User getUser() { return user; }
@@ -60,6 +70,7 @@ public class Asana {
         Asana asana = (Asana) o;
         return id == asana.id;
     }
+
 
     @Override
     public int hashCode() {

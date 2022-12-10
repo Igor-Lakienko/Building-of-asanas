@@ -9,12 +9,15 @@ img{
     width: 100%;
 }
 
+
 .asana, .cartAsana, .showAsana {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     height: max-content;
     float: left;
+    background: rgb(251, 220, 192);
+
 }
 
 
@@ -25,7 +28,7 @@ img{
     margin-bottom: 50px;
     margin-left: 25px;
     margin-right: 25px;
-    background: indianred;
+    background: rgb(252, 236, 221);
     padding: 1px;
     box-sizing: content-box;
 }
@@ -39,24 +42,25 @@ img{
 
 .asana > div h3, .cartAsana > div h3{
     max-width: max-content;
-    color: rgb(201, 248, 154);
+    color: rgb(243, 75, 2);
     padding: 5px;
     margin: 7 px 0 ;
     font-size: 25px;
-    text-decoration: underline whitesmoke;
 }
 
 .asana > div p{
     max-width: max-content;
-    color: beige;
+    color: rgb(64, 42, 11);
     padding: 5px;
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .asana > div form button img, .cartAsana > div form button img {
     width: 60px;
     height: 60px;
     cursor: pointer;
-    background: indianred;
+    background: rgb(252, 236, 221);
 }
 
 .cartAsanaComment div{
@@ -73,14 +77,15 @@ img{
     margin-top: 10px;
     font-size: 25px;
     text-align: left;
-    background: rgb(173, 171, 173);
+    background: rgb(254, 188, 128);
+    color: rgb(64, 42, 11);
     width: 100%;
-    border: 2px solid rgb(18, 17, 17);
+    border: 2px solid rgb(64, 42, 11);
 
 }
 
 .cartAsanaComment  a{
-    border: 2px solid rgb(18, 17, 17);
+    border: 2px solid rgb(64, 42, 11);
     border-radius: 5px;
     padding: 10px 10px;
     margin-left: 45%;
@@ -88,13 +93,13 @@ img{
     top: 10px;
     text-decoration: none;
     width: 100%;
-    background: rgb(127, 241, 136);
-    color: rgb(10, 11, 11);
+    background: rgb(254, 188, 128);
+    color: rgb(243, 75, 2);
 }
 
 
 body{
-    background-color: rgb(178, 172, 171);
+    background-color:rgb(251, 220, 192);
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
 }
@@ -102,9 +107,9 @@ body{
 .block {
     margin-top: 20px;
     width: 100%;
-    border: 2px solid rgb(18, 17, 17);
+    border: 2px solid rgb(64, 42, 11);
     border-bottom-width: 2px;
-    background: rgb(210, 218, 217);
+    background: rgb(254, 188, 128);
     line-height: 100%; 
     text-align: center;
 }
@@ -134,45 +139,68 @@ body{
     font-size: 20px;
 }
 
+.block-user {
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid rgb(64, 42, 11);
+    border-bottom-width: 2px;
+    background: rgb(254, 188, 128);
+    line-height: 100%; 
+    text-align: center;
+}
+
+.block-user h1{
+    color: rgb(64, 42, 11);
+    padding: 10px 10px;
+}
+
+.block-user h3{
+    padding: 10px 10px;
+    color: rgb(64, 42, 11);
+}
+
 .block-admin {
     margin-left: 40px;
     margin-top: 20px;
     margin-bottom: 10px;
     padding: 20px 20px;
     width: 30%;
-    border: 2px solid rgb(18, 17, 17);
-    background: rgb(210, 218, 217);
+    border: 2px solid rgb(64, 42, 11);
+    background: rgb(254, 188, 128);
 }
 
 .block-admin h1{
-    color: coral;
+    color: rgb(64, 42, 11);
     padding: 10px 10px;
 }
 
 .block-admin h3{
     padding: 10px 10px;
-    color: rgb(18, 19, 16);
+    color: rgb(64, 42, 11);
 }
 
 .block-admin span{
     padding: 10px 0px;
-    color: rgb(111, 158, 17);
+    color: rgb(243, 75, 2);
 }
 
 .block-admin a {
     padding: 10px 25px;
     border-radius:15px;
-    color: rgb(247, 218, 181);
+    color: rgb(64, 42, 11);
     border: 0;
     cursor: pointer;
+    text-decoration: none;
     transition: background 500ms ease ;
-    background: rgb(36, 93, 36);
+    background: rgb(254, 188, 128);
+    border: 2px solid rgb(64, 42, 11);
+
 }
 
 .block-admin a:hover{
-    color: rgb(132, 132, 0);
-    background: rgb(34, 50, 0);
+    background: rgb(251, 220, 192);
 }
+
 
 
 .form{
@@ -219,8 +247,8 @@ body{
 
 .icon {
     float: right;
-    background-color: indianred;
-    border: 1px solid indianred;    
+    background-color:rgb(252, 236, 221);
+    border: 1px solid rgb(252, 236, 221);    
 }
 
 
@@ -239,7 +267,7 @@ header{
 
 header nav a{
     font-size: 19px;
-    color: rgb(67, 99, 64);
+    color: rgb(64, 42, 11);
     margin-left: 20px;
     transition: color 500ms ease;
     text-decoration: none;
@@ -249,8 +277,8 @@ header nav a{
 }
 
 header nav a:hover{
-    color: rgb(195, 248, 248);
-    border: 2px solid rgb(195, 248, 248);
+    color: rgb(243, 75, 2);
+    border: 2px solid rgb(243, 75, 2);
     border-radius: 20px;
     padding: 0 5px ;
 }
@@ -259,15 +287,16 @@ header nav a:hover{
 .button, .edit-btn{
     padding: 10px 25px;
     border-radius:5px;
-    color: antiquewhite;
+    color: rgb(243, 75, 2);
     border: 0;
     cursor: pointer;
     transition: background 500ms ease ;
-    background: rgb(38, 83, 40);
+    background: rgb(254, 188, 128);
+    border: 2px solid rgb(64, 42, 11);
+
 }
 
 .login-form h1{
-    color: cornflowerblue;
     margin-top: 20px;
     margin-left: 130px;
 }
@@ -285,23 +314,20 @@ header nav a:hover{
 
 .login-form span{
     font-size: 22px;
-    color: rgb(23, 135, 23);
+    color: rgb(243, 75, 2);
 }
 
 .logo img{
     width: 130px;
     height: 119px;
+
 }
 
-.logo img {
-    width: 130px;
-    height: 119px;
-}
 
 .presentation{
     float: left;
     width: 100%;
-    background:rgb(77, 77, 60);
+    background:rgb(254, 188, 128);
     padding: 50px 100px;
     box-sizing: border-box;
     margin-bottom: 30px;
@@ -314,7 +340,7 @@ header nav a:hover{
 }
 
 .presentation p{
-    color: thistle;
+    color: rgb(243, 75, 2);
     font-size: 54px;
     padding-top: 7px;
     max-width: 380px;
@@ -322,22 +348,13 @@ header nav a:hover{
 .presentation img{
     float: right;
     width: 300px;
-    position: relative;
-    top: 58px;
 } 
 
-
-/* .showAsana div {
-    /* justify-content: flex-start;
-    width: 100%;
-    height: max-content;
-    background: yellow; */
-/* } */ 
 
 .showAsana div img {
     margin-top: 50px;
     margin-left: 450px;
-    border: 2px solid thistle;
+    border: 2px solid rgb(64, 42, 11);
     width: 800px;
     height: 600px;
 }
@@ -345,21 +362,68 @@ header nav a:hover{
     justify-content: flex-start;
     max-width: 805px;
     font-size: 36px;
-    text-decoration-line: underline ;
-    color: rgb(20, 13, 20);
+    color: rgb(243, 75, 2);
     margin-left: 450px;
     max-height: max-content;
     box-sizing: content-box;
 }
 
-.showAsana div h4{
+/* .showAsana div h4{
     justify-content: flex-start;
-    /* background: aquamarine; */
+    color: rgb(64, 42, 11);
     max-height: max-content;
     box-sizing: content-box;
-    font-size: 24px;
+    border: 2px solid rgb(64, 42, 11);
+    font-size: 22px;
+    width: 96%;
     margin-left: 25px;
-    margin-top: 40px;
+    margin-top: 30px;
+    padding: 10px 10px;
+} */
+
+.showAsana div h5{
+    justify-content: flex-start;
+    color: rgb(18, 130, 29);
+    max-height: max-content;
+    box-sizing: content-box;
+    font-size: 20px;
+    margin-left: 25px;
+    margin-top: 30px;
+    padding-bottom: 5px;
+}
+
+.showAsana div h4{
+    justify-content: flex-start;
+    color: rgb(64, 42, 11);
+    max-height: max-content;
+    box-sizing: content-box;
+    font-size: 16px;
+    width: 96%;
+    margin-left: 25px;
+    
+}
+
+.showAsana div h6{
+    justify-content: flex-start;
+    color: rgb(144, 20, 20);
+    max-height: max-content;
+    box-sizing: content-box;
+    font-size: 20px;
+    margin-left: 25px;
+    margin-top: 30px;
+    padding-bottom: 5px;
+}
+
+.showAsana div h2 { 
+    margin-left: 25px;
+    margin-top: 50px;
+    font-size: 19px;
+    color: rgb(64, 42, 11);
+}
+
+.showAsana div h2 b{
+    font-size: 19px;
+    color: rgb(243, 75, 2);
 }
 
 .showAsana div p{
@@ -369,55 +433,33 @@ header nav a:hover{
     font-size: 18px;
     margin-left: 25px;
     margin-right: 25px;
-    /* background: violet; */
+    color: rgb(64, 42, 11);
     margin-top: 40px;
 }
 
-.showAsana div h2 { 
-    margin-left: 25px;
-    margin-top: 50px;
-    font-size: 32px;
-    color: black;
-}
 
-.showAsana div h2 b{
-    font-size: 29px;
-    color: cadetblue;
-}
-
-.showAsana a ,.showAsana form button {
+.showAsana a , .showAsana form button {
     margin-left: 25px;
     margin-top: 10px;
     padding: 10px 25px;
     border-radius:5px;
-    color: antiquewhite;
-    border: 0;
+    color: rgb(243, 75, 2);
     cursor: pointer;
     text-decoration: none;
     transition: background 500ms ease ;
-    background: rgb(38, 83, 40);
+    background: rgb(254, 188, 128);
+    border: 2px solid rgb(64, 42, 11);
+    
 }
 
 .showAsana a:hover{
-    background: cadetblue;
-    color: brown;
+    background: rgb(251, 220, 192);
 }
 
-/* .showAsana form button {
-    margin-left: 25px;
-    margin-top: 10px;
-    padding: 10px 25px;
-    border-radius:5px;
-    color: antiquewhite;
-    border: 0;
-    cursor: pointer;
-    transition: background 500ms ease ;
-    background: rgb(38, 83, 40);
-} */
 
 .error{
     font-family: 'Montserrat', sans-serif ;
-    color: rgb(164, 30, 3);
+    color: rgb(243, 19, 11);
     font-size: 20px;
     padding-bottom: 10px;
 }

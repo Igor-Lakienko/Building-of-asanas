@@ -24,7 +24,6 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-    //Доделать проблему с отображением ошибки...
     @GetMapping("/login")
     public String login(@RequestParam(name = "error", defaultValue = "", required = false) String error, Model model) {
 

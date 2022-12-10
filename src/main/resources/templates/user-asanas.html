@@ -11,6 +11,11 @@
 
 
 <main class="container">
+  <div class="block-user">
+    <h1>Комментарий пользователя:</h1>
+    <h3 th:text="${user_comment}"></h3>
+  </div>
+
   <div class="cartAsana">
     <div th:each="el : ${user_asanas}" th:if="${!user_asanas.isEmpty()}">
       <img th:src="${el.asana.image}" th:alt="${el.asana.title}"></a>

@@ -22,7 +22,7 @@ public class AsanaController {
     @GetMapping("/asana/add")
     public String add(@RequestParam(name = "error",defaultValue = "",required = false)String error, Model model){
 
-        if(error.equals("password"))
+        if(error.equals("empty"))
             model.addAttribute("error", "Поля не должны быть пустыми!");
 
         return "add-asana";
@@ -35,13 +35,16 @@ public class AsanaController {
                         @RequestParam String title,
                         @RequestParam String image,
                         @RequestParam String info,
-                        @RequestParam String fullInfo){
+                        @RequestParam String fullInfo,
+                        @RequestParam String positiveEffects,
+                        @RequestParam String negativeEffects){
 
-        Asana asana = new Asana(title, info, image, fullInfo, user);
+        Asana asana = new Asana(title, info, image, fullInfo, user, positiveEffects, negativeEffects);
 
-        if (asana.getTitle().length() < 1 || asana.getImage().length() < 1
-                || asana.getInfo().length() < 1 || asana.getFullInfo().length() < 1)
-            return "redirect:/asana/add?error=password";
+        if (asana.getTitle().length() < 1 || asana.getImage().length() < 1 || asana.getInfo().length() < 1
+                || asana.getFullInfo().length() < 1 || asana.getPositiveEffects().length() < 1
+                || asana.getNegativeEffects().length() < 1)
+            return "redirect:/asana/add?error=empty";
 
         else
             asanaRepository.save(asana);
@@ -62,14 +65,13 @@ public class AsanaController {
     public String update(@PathVariable(value = "id") long id
                         ,@RequestParam(name = "error",defaultValue = "",required = false) String error, Model model){
 
-        if (error.equals("password"))
+        if (error.equals("empty"))
             model.addAttribute("error", "Поля не должны быть пустыми!");
 
         if (error.equals("info"))
             model.addAttribute("error", "Поле инфо не может содержать больше 255 символов.");
 
-
-            Asana asana = asanaRepository.findById(id).orElse(new Asana());
+        Asana asana = asanaRepository.findById(id).orElse(new Asana());
         model.addAttribute("asana", asana);
 
         return "asana-update";
@@ -82,17 +84,22 @@ public class AsanaController {
                          @RequestParam String title,
                          @RequestParam String image,
                          @RequestParam String info,
-                         @RequestParam String fullInfo){
+                         @RequestParam String fullInfo,
+                         @RequestParam String positiveEffects,
+                         @RequestParam String negativeEffects){
 
         Asana asana = asanaRepository.findById(id).orElse(new Asana());
         asana.setTitle(title);
         asana.setImage(image);
         asana.setInfo(info);
         asana.setFullInfo(fullInfo);
+        asana.setPositiveEffects(positiveEffects);
+        asana.setNegativeEffects(negativeEffects);
 
         if(info.length() < 254) {
-            if (title.length() < 1 || image.length() < 1 || info.length() < 1 || fullInfo.length() < 1)
-                return "redirect:/asana/" + id + "/update?error=password";
+            if (title.length() < 1 || image.length() < 1 || info.length() < 1 || fullInfo.length() < 1
+            || positiveEffects.length() < 1 || negativeEffects.length() < 1)
+                return "redirect:/asana/" + id + "/update?error=empty";
             else
                 asanaRepository.save(asana);
         }else
