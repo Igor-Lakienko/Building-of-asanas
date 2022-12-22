@@ -9,10 +9,34 @@
     <div th:replace="layouts/header :: header"></div>
     <div class="presentation">
         <img th:src="@{/icon/logo.png}">
-        <h2>Составь свою последовательность</h2>
         <p>Составь свою последовательность</p>
+        <h2>Зарегистрируйся и радуй учеников новой практикой!</h2>
     </div>
 <main class="container">
+
+    <div class="sortedButton">
+        <a href="/?value=All"><h4>ВСЕ</h4></a>
+        <a href="/?value=A"><h4>А</h4></a>
+        <a href="/?value=B"><h4>Б</h4></a>
+        <a href="/?value=C"><h4>В</h4></a>
+        <a href="/?value=D"><h4>Г</h4></a>
+        <a href="/?value=E"><h4>Д</h4></a>
+        <a href="/?value=F"><h4>И</h4></a>
+        <a href="/?value=G"><h4>Й</h4></a>
+        <a href="/?value=H"><h4>К</h4></a>
+        <a href="/?value=I"><h4>Л</h4></a>
+        <a href="/?value=J"><h4>М</h4></a>
+        <a href="/?value=K"><h4>Н</h4></a>
+        <a href="/?value=L"><h4>П</h4></a>
+        <a href="/?value=M"><h4>Р</h4></a>
+        <a href="/?value=N"><h4>С</h4></a>
+        <a href="/?value=O"><h4>Т</h4></a>
+        <a href="/?value=P"><h4>У</h4></a>
+        <a href="/?value=Q"><h4>Х</h4></a>
+        <a href="/?value=R"><h4>Ч</h4></a>
+        <a href="/?value=S"><h4>Ш</h4></a>
+        <a href="/?value=T"><h4>Э</h4></a>
+    </div>
 
     <div class="asana">
         <div th:each="el : ${asana}" th:if="${!asana.isEmpty()}">

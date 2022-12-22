@@ -68,9 +68,6 @@ public class AsanaController {
         if (error.equals("empty"))
             model.addAttribute("error", "Поля не должны быть пустыми!");
 
-        if (error.equals("info"))
-            model.addAttribute("error", "Поле инфо не может содержать больше 255 символов.");
-
         Asana asana = asanaRepository.findById(id).orElse(new Asana());
         model.addAttribute("asana", asana);
 
@@ -96,14 +93,11 @@ public class AsanaController {
         asana.setPositiveEffects(positiveEffects);
         asana.setNegativeEffects(negativeEffects);
 
-        if(info.length() < 254) {
             if (title.length() < 1 || image.length() < 1 || info.length() < 1 || fullInfo.length() < 1
             || positiveEffects.length() < 1 || negativeEffects.length() < 1)
                 return "redirect:/asana/" + id + "/update?error=empty";
             else
                 asanaRepository.save(asana);
-        }else
-            return "redirect:/asana/" + id + "/update?error=info";
 
         return "redirect:/asana/" + id;
     }

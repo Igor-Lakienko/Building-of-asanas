@@ -21,7 +21,7 @@ img{
 }
 
 
-.asana > div, .cartAsana > div {
+.asana > div, .cartAsana > div{
     justify-content: flex-start;
     width: 328px;
     height: 600px;
@@ -201,7 +201,41 @@ body{
     background: rgb(251, 220, 192);
 }
 
+.block-about-us{
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid rgb(64, 42, 11);
+    border-bottom-width: 2px;
+    background: rgb(254, 188, 128);
+    line-height: 100%; 
+    text-align: left;
+}
 
+.block-about-us p { 
+    text-indent: 10px;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-top: 10px;
+    font-size: 17px;
+    line-height: 27px;
+    color: rgb(64, 42, 11);
+}
+
+.block-about-us h1{
+    margin-left: 25px;
+    margin-top: 10px;
+    font-size: 22px;
+    color: rgb(243, 75, 2);
+    text-decoration: none;
+}
+
+.block-about-us a {
+    color: rgb(64, 42, 11);
+}
+
+.block-about-us a:hover{
+    color: rgb(50, 33, 9);
+}
 
 .form{
     padding: 25px 30px;
@@ -323,6 +357,42 @@ header nav a:hover{
 
 }
 
+.sortedButton{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: max-content;
+    float: left;
+    background: rgb(251, 220, 192);
+    margin-left: 17px;
+}
+
+.sortedButton div {
+   justify-content: flex-start;
+    width: 100%;
+    height: max-content;
+    margin-bottom: 15px;
+    background: rgb(252, 236, 221);
+    padding: 1px;
+}
+
+.sortedButton a{
+    padding: 5px 15px;
+    border: 1px solid rgb(64, 42, 11); 
+    margin-bottom: 25px;
+    margin-left: 8px;
+    background: rgb(254, 188, 128);
+    color: rgb(64, 42, 11);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.sortedButton a:hover{
+    background: rgb(242, 121, 70);
+    color: rgb(76, 54, 22);
+
+}
 
 .presentation{
     float: left;
@@ -470,7 +540,9 @@ footer{
     width: 100%;
     margin-top: 50px;
     margin-bottom: 100px;
-    text-align: center;
+    margin-left: 25px;
+    font-weight: 600;
+    text-align: left;
 }
 
 

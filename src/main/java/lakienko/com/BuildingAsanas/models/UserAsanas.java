@@ -4,7 +4,6 @@ package lakienko.com.BuildingAsanas.models;
 import javax.persistence.*;
 
 @Entity
-//@Table(name = "user_asanas")
 public class UserAsanas {
 
     @Id
