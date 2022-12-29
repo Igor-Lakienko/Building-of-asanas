@@ -8,12 +8,10 @@ import lakienko.com.BuildingAsanas.repositories.AsanaRepository;
 import lakienko.com.BuildingAsanas.repositories.UserAsanasRepository;
 import lakienko.com.BuildingAsanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.security.Principal;
 import java.util.*;
@@ -21,7 +19,6 @@ import java.util.*;
 
 @Controller
 public class CartController {
-
 
     UserAsanas userAsanas = new UserAsanas();
 
@@ -37,6 +34,7 @@ public class CartController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     @GetMapping("/cart-asanas")
     public String userLoaded(@RequestParam(name ="error", defaultValue = "",required = false) String error,
                                  Principal principal,Model model){
@@ -48,14 +46,12 @@ public class CartController {
         model.addAttribute("user_comment", user_comment);
         model.addAttribute("user_asanas", user_asanas);
 
-
         return "cart-asanas";
     }
 
 
     @PostMapping("/cart-asanas/{id}/add")
-    public String addAsanaCartPost(@PathVariable(value = "id") long id,
-                                   Principal principal){
+    public String addAsanaCartPost(@PathVariable(value = "id") long id,Principal principal){
 
         User userCurrent = userRepository.findByUsername(principal.getName());
         Asana asanaCurrent = asanaRepository.findById(id).orElse(new Asana());

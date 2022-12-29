@@ -161,11 +161,10 @@ public class MainController {
 
 
     @GetMapping("/about-us")
-    public String about(@RequestParam(name = "username",required = false, defaultValue = "Hello")
-                            String username ,Model model){
-        model.addAttribute("name",username);
+    public String about(){
         return "about-us";
     }
+
 
     private static <E> void sort(List list){
         Collections.sort(list, new Comparator<Asana>(){

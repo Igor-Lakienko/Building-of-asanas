@@ -438,18 +438,6 @@ header nav a:hover{
     box-sizing: content-box;
 }
 
-/* .showAsana div h4{
-    justify-content: flex-start;
-    color: rgb(64, 42, 11);
-    max-height: max-content;
-    box-sizing: content-box;
-    border: 2px solid rgb(64, 42, 11);
-    font-size: 22px;
-    width: 96%;
-    margin-left: 25px;
-    margin-top: 30px;
-    padding: 10px 10px;
-} */
 
 .showAsana div h5{
     justify-content: flex-start;

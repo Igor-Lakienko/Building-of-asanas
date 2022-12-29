@@ -15,12 +15,6 @@
            <h1>Пользователь: <span th:text="${user.username}"></span></h1><br>
             <h3>Роль на сайте: <span th:text="${user.roles[0]} "></span></h3>
             <h3>Email: <span th:text="${user.email}"></span></h3><br>
-<!--            Добавить реализацию-->
-<!--            <select name="roles">-->
-<!--                <option value="USER">ПОЛЬЗОВАТЕЛЬ</option>-->
-<!--                <option value="ADMIN">АДМИНИСТРАТОР</option>-->
-<!--                <option value="REDACTOR">РЕДАКТОР</option>-->
-<!--            </select>-->
             <a th:href="@{/admin/user-} + ${user.id}">Асаны пользователя</a>
         </div>
     </div>

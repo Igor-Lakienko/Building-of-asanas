@@ -57,13 +57,14 @@ public class AsanaController {
     public String showAsana(@PathVariable(value = "id") long id, Model model){
         Asana asana = asanaRepository.findById(id).orElse(new Asana());
         model.addAttribute("asana", asana);
+
         return "show-asana";
     }
 
 
     @GetMapping("/asana/{id}/update")
-    public String update(@PathVariable(value = "id") long id
-                        ,@RequestParam(name = "error",defaultValue = "",required = false) String error, Model model){
+    public String update(@PathVariable(value = "id") long id,
+                         @RequestParam(name = "error",defaultValue = "",required = false) String error, Model model){
 
         if (error.equals("empty"))
             model.addAttribute("error", "Поля не должны быть пустыми!");
@@ -107,6 +108,7 @@ public class AsanaController {
     public String deleteAsana( @PathVariable(value = "id") long id){
         Asana asana = asanaRepository.findById(id).orElse(new Asana());
         asanaRepository.delete(asana);
+
         return "redirect:/";
     }
 

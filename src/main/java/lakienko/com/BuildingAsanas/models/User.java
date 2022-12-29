@@ -25,13 +25,13 @@ public class User implements UserDetails {
     private Set<UserAsanas> userAsanas = new HashSet<>() ;
 
 
-
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
     public User() {}
+
 
     public User(String username, String password, String email, boolean enabled, Set<Role> roles, String comment) {
         this.username = username;
@@ -41,6 +41,7 @@ public class User implements UserDetails {
         this.roles = roles;
         this.comment = comment;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {return true;}
@@ -84,6 +85,7 @@ public class User implements UserDetails {
     public String getComment() { return comment; }
     public void setComment(String comment) { this.comment = comment; }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,6 +93,7 @@ public class User implements UserDetails {
         User user = (User) o;
         return id == user.id;
     }
+
 
     @Override
     public int hashCode() {

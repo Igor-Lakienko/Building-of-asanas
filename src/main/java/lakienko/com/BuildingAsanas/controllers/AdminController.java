@@ -33,13 +33,10 @@ public class AdminController {
         Set<UserAsanas> user_asanas = user.getUserAsanas();
         String user_comment = user.getComment();
 
-
         model.addAttribute("title", "Асаны пользователя: " + user.getUsername());
         model.addAttribute("user_asanas", user_asanas);
         model.addAttribute("user_comment", user_comment);
 
-
         return "user-asanas";
-
     }
 }

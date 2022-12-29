@@ -19,11 +19,11 @@
         <span sec:authorize="isAuthenticated()">
             <a href="/cart-asanas/">Мои асаны</a>
             <a href="/user">Кабинет Пользователя</a>
-            <a href="/asana/add">Добавить Ассану</a>
          </span>
 
         <span sec:authorize="hasAuthority('ADMIN')">  
-        <a href="/admin">Панель админа</a>
+            <a href="/asana/add">Добавить Ассану</a>
+            <a href="/admin">Панель админа</a>
         </span>
 
         <a href="/about-us">О Нас</a>

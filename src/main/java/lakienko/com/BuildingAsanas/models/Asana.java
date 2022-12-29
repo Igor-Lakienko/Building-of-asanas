@@ -3,7 +3,6 @@ package lakienko.com.BuildingAsanas.models;
 import javax.persistence.*;
 import java.util.Objects;
 
-
 @Entity
 @Table(name = "asana")
 public class Asana {

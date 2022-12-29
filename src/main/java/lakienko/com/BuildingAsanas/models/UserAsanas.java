@@ -19,7 +19,6 @@ public class UserAsanas {
     private Asana asana;
 
 
-
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
@@ -29,12 +28,4 @@ public class UserAsanas {
     public Asana getAsana() { return asana;}
     public void setAsana(Asana asana) { this.asana = asana; }
 
-    @Override
-    public String toString() {
-        return "UserAsanas{" +
-                "id=" + id +
-                ", user=" + user +
-                ", asana=" + asana +
-                '}';
-    }
 }
