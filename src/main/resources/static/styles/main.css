@@ -411,13 +411,13 @@ header nav a:hover{
 
 .presentation p{
     color: rgb(243, 75, 2);
-    font-size: 54px;
+    font-size: 45px;
     padding-top: 7px;
     max-width: 380px;
 }
 .presentation img{
     float: right;
-    width: 300px;
+    width: 250px;
 } 
 
 
