@@ -1,6 +1,6 @@
-package lakienko.com.BuildingAsanas.repositories;
+package lia.ru.building.asanas.repositories;
 
-import lakienko.com.BuildingAsanas.models.UserAsanas;
+import lia.ru.building.asanas.models.UserAsanas;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
