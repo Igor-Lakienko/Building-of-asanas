@@ -1,8 +1,8 @@
-package lakienko.com.BuildingAsanas.controllers;
+package lia.ru.building.asanas.controllers;
 
-import lakienko.com.BuildingAsanas.models.User;
-import lakienko.com.BuildingAsanas.models.UserAsanas;
-import lakienko.com.BuildingAsanas.repositories.UserRepository;
+import lia.ru.building.asanas.models.User;
+import lia.ru.building.asanas.models.UserAsanas;
+import lia.ru.building.asanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +30,12 @@ public class AdminController {
     public String userReviews (@PathVariable(value = "id") long id,Model model){
 
         User user = userRepository.findById(id).orElse(new User());
-        Set<UserAsanas> user_asanas = user.getUserAsanas();
-        String user_comment = user.getComment();
+//        Set<UserAsanas> user_asanas = user.getUserAsanas();
+//        String user_comment = user.getComment();
 
         model.addAttribute("title", "Асаны пользователя: " + user.getUsername());
-        model.addAttribute("user_asanas", user_asanas);
-        model.addAttribute("user_comment", user_comment);
+//        model.addAttribute("user_asanas", user_asanas);
+//        model.addAttribute("user_comment", user_comment);
 
         return "user-asanas";
     }

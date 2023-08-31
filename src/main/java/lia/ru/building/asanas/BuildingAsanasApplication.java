@@ -1,4 +1,4 @@
-package lakienko.com.BuildingAsanas;
+package lia.ru.building.asanas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

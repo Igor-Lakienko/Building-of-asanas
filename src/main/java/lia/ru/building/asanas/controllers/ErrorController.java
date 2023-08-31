@@ -1,4 +1,4 @@
-package lakienko.com.BuildingAsanas.controllers;
+package lia.ru.building.asanas.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

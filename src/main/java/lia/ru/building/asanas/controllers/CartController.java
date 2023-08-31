@@ -1,12 +1,12 @@
-package lakienko.com.BuildingAsanas.controllers;
+package lia.ru.building.asanas.controllers;
 
 
-import lakienko.com.BuildingAsanas.models.Asana;
-import lakienko.com.BuildingAsanas.models.User;
-import lakienko.com.BuildingAsanas.models.UserAsanas;
-import lakienko.com.BuildingAsanas.repositories.AsanaRepository;
-import lakienko.com.BuildingAsanas.repositories.UserAsanasRepository;
-import lakienko.com.BuildingAsanas.repositories.UserRepository;
+import lia.ru.building.asanas.models.Asana;
+import lia.ru.building.asanas.models.User;
+import lia.ru.building.asanas.models.UserAsanas;
+import lia.ru.building.asanas.repositories.AsanaRepository;
+import lia.ru.building.asanas.repositories.UserAsanasRepository;
+import lia.ru.building.asanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -40,11 +40,11 @@ public class CartController {
                                  Principal principal,Model model){
 
         User user = userRepository.findByUsername(principal.getName());
-        Set<UserAsanas> user_asanas = user.getUserAsanas();
-        String user_comment = user.getComment();
+//        Set<UserAsanas> user_asanas = user.getUserAsanas();
+//        String user_comment = user.getComment();
 
-        model.addAttribute("user_comment", user_comment);
-        model.addAttribute("user_asanas", user_asanas);
+//        model.addAttribute("user_comment", user_comment);
+//        model.addAttribute("user_asanas", user_asanas);
 
         return "cart-asanas";
     }
@@ -81,7 +81,7 @@ public class CartController {
                              Principal principal,Model model){
 
         User user = userRepository.findByUsername(principal.getName());
-        String user_comment = user.getComment();
+        String user_comment = user.getCommentOfUser();
 
         model.addAttribute("user_comment", user_comment);
 
@@ -96,9 +96,9 @@ public class CartController {
     public String updateUserComment(Principal principal,User userForm){
 
         User user = userRepository.findByUsername(principal.getName());
-        user.setComment(userForm.getComment());
+        user.setCommentOfUser(userForm.getCommentOfUser());
 
-        if (userForm.getComment().length() < 1)
+        if (userForm.getCommentOfUser().length() < 1)
             return "redirect:/cart-asanas/user-comment?error=comment";
         else
             userRepository.save(user);

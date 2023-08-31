@@ -1,4 +1,4 @@
-package lakienko.com.BuildingAsanas.models;
+package lia.ru.building.asanas.models;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -8,5 +8,7 @@ public enum Role implements GrantedAuthority {
     REDACTOR;
 
     @Override
-    public String getAuthority() { return name(); }
+    public String getAuthority() {
+        return name();
+    }
 }

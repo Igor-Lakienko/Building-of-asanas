@@ -1,8 +1,8 @@
-package lakienko.com.BuildingAsanas.controllers;
+package lia.ru.building.asanas.controllers;
 
-import lakienko.com.BuildingAsanas.models.Role;
-import lakienko.com.BuildingAsanas.models.User;
-import lakienko.com.BuildingAsanas.repositories.UserRepository;
+import lia.ru.building.asanas.models.Role;
+import lia.ru.building.asanas.models.User;
+import lia.ru.building.asanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,8 +27,8 @@ public class UserController {
     @GetMapping("/login")
     public String login(@RequestParam(name = "error", defaultValue = "", required = false) String error, Model model) {
 
-        if (error.equals("error")){
-            model.addAttribute("error","Поля не должны быть пустыми!");
+        if (error.equals("error")) {
+            model.addAttribute("error", "Поля не должны быть пустыми!");
         }
 
         return "login";
@@ -38,9 +38,9 @@ public class UserController {
     @PostMapping("/login")
     public String loginCheck(@RequestParam String username,
                              @RequestParam String password
-    ){
+    ) {
 
-        if(username.length() < 1 || password.length() < 1)
+        if (username.length() < 1 || password.length() < 1)
             return "redirect:/login?error=error";
 
         return "redirect:/login";
@@ -49,11 +49,11 @@ public class UserController {
 
     @GetMapping("/user")
     public String user(@RequestParam(name = "error", defaultValue = "", required = false)
-                           String error, Principal principal, Model model){
+                       String error, Principal principal, Model model) {
 
-         User user = userRepository.findByUsername(principal.getName());
-         model.addAttribute("password", user.getPassword());
-         model.addAttribute("email", user.getEmail());
+        User user = userRepository.findByUsername(principal.getName());
+        model.addAttribute("password", user.getPassword());
+        model.addAttribute("email", user.getEmail());
 
         if (error.equals("password"))
             model.addAttribute("error", "Поля не должны быть пустыми!");
@@ -63,7 +63,7 @@ public class UserController {
 
 
     @PostMapping("/user/update")
-    public String updateUser(Principal principal, User userForm){
+    public String updateUser(Principal principal, User userForm) {
 
         User user = userRepository.findByUsername(principal.getName());
         user.setEmail(userForm.getEmail());
@@ -79,15 +79,14 @@ public class UserController {
     }
 
 
-
     @GetMapping("/reg")
     public String reg(@RequestParam(name = "error", defaultValue = "", required = false) String error, Model model) {
 
-       if (error.equals("username"))
-           model.addAttribute("error", "Такой логин пользователя уже занят");
+        if (error.equals("username"))
+            model.addAttribute("error", "Такой логин пользователя уже занят");
 
-       if (error.equals("password"))
-           model.addAttribute("error", "Поля не должны быть пустыми!");
+        if (error.equals("password"))
+            model.addAttribute("error", "Поля не должны быть пустыми!");
 
         return "reg";
     }
@@ -95,16 +94,24 @@ public class UserController {
 
     @PostMapping("/reg")
     public String addUser(
-                           @RequestParam String username,
-                           @RequestParam String email,
-                           @RequestParam String password) {
+            @RequestParam String username,
+            @RequestParam String email,
+            @RequestParam String password) {
 
         if (userRepository.findByUsername(username) != null)
             return "redirect:/reg?error=username";
 
         password = passwordEncoder.encode(password);
-        User user = new User(username,password,email, true, Collections.singleton(Role.USER),
-                "Здесь вы можете оставить свой комментарий к уроку.");
+        var user = User.builder()
+                .username(username)
+                .password(password)
+                .email(email)
+                .enabled(true)
+                .roles(Role.USER)
+                .commentOfUser("Здесь вы можете оставить свой комментарий к уроку.")
+                .build();
+//        User user = new User(username, password, email, true, Collections.singleton(Role.USER),
+//                "Здесь вы можете оставить свой комментарий к уроку.");
 
         if (username.length() < 1 || email.length() < 1 || password.length() < 1)
             return "redirect:/reg?error=password";

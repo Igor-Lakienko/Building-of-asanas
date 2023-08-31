@@ -1,7 +1,7 @@
-package lakienko.com.BuildingAsanas.service;
+package lia.ru.building.asanas.service;
 
-import lakienko.com.BuildingAsanas.models.User;
-import lakienko.com.BuildingAsanas.repositories.UserRepository;
+import lia.ru.building.asanas.models.User;
+import lia.ru.building.asanas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
