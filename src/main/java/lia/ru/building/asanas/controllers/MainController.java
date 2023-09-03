@@ -1,8 +1,8 @@
 package lia.ru.building.asanas.controllers;
 
 import lia.ru.building.asanas.models.Asana;
-import lia.ru.building.asanas.repositories.AsanaRepository;
-import lia.ru.building.asanas.repositories.UserRepository;
+import lia.ru.building.asanas.repository.AsanaRepository;
+import lia.ru.building.asanas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -14,7 +14,7 @@
     <div sec:authorize="hasAuthority('ADMIN')">
         <div class="block-admin" th:each="user : ${users}">
            <h1>Пользователь: <span th:text="${user.username}"></span></h1><br>
-            <h3>Роль на сайте: <span th:text="${user.roles[0]} "></span></h3>
+            <h3>Роль на сайте: <span th:text="${user.role} "></span></h3>
             <h3>Email: <span th:text="${user.email}"></span></h3><br>
             <a th:href="@{/admin/user-} + ${user.id}">Асаны пользователя</a>
         </div>

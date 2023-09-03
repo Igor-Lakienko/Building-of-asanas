@@ -1,0 +1,184 @@
+databaseChangeLog:
+#  - changeSet:
+#      id: 1
+#      author: Igor
+#      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+#      changes:
+#        - createSequence:
+#            incrementBy: 50
+#            sequenceName: seq_asana
+#            startValue: 1
+#  - changeSet:
+#      id: 2
+#      author: Igor
+#      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+#      changes:
+#        - createSequence:
+#            incrementBy: 50
+#            sequenceName: seq_user
+#            startValue: 1
+  - changeSet:
+      id: 3
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: seq_user_asanas
+            startValue: 1
+#  - changeSet:
+#      id: 9
+#      author: Igor
+#      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+#      changes:
+#        - createTable:
+#            tableName: seq_user
+#            columns:
+#              - column:
+#                  name: next_val
+#                  type: BIGINT
+  - changeSet:
+      id: 4
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            tableName: asanas
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_asana
+              - column:
+                  name: info
+                  type: VARCHAR(255)
+              - column:
+                  name: negative_effects
+                  type: VARCHAR(255)
+              - column:
+                  name: positive_effects
+                  type: VARCHAR(255)
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: image
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 5
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: role
+                  type: VARCHAR(255)
+              - column:
+                  name: enabled
+                  type: BIT(1)
+              - column:
+                  name: comment_of_user
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 6
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            tableName: user_asanas
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_asanas
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: asana_id
+                  type: BIGINT
+  - changeSet:
+      id: 7
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_asanas
+            constraintName: FK_USER_ASANAS_ON_USER
+            referencedColumnNames: id
+            referencedTableName: users
+  - changeSet:
+      id: 8
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: asana_id
+            baseTableName: user_asanas
+            constraintName: FK_USER_ON_USER_ASANAS
+            referencedColumnNames: id
+            referencedTableName: asanas
+#  - changeSet:
+#      id: 9
+#      author: Igor
+#      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+#      changes:
+#        - addForeignKeyConstraint:
+#            baseColumnNames: user_id
+#            baseTableName: asanas
+#            constraintName: FK_ASANAS_ON_USER
+#            referencedColumnNames: id
+#            referencedTableName: users
+  - changeSet:
+      id: 9
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            tableName: seq_user
+            columns:
+              - column:
+                  name: next_val
+                  type: BIGINT
+  - changeSet:
+      id: 10
+      author: Igor
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            tableName: seq_asana
+            columns:
+              - column:
+                  name: next_val
+                  type: BIGINT
+
+
+
