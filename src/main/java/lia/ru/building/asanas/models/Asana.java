@@ -1,7 +1,6 @@
 package lia.ru.building.asanas.models;
 
 import lombok.*;
-import org.hibernate.annotations.Tables;
 
 import javax.persistence.*;
 
@@ -28,9 +27,6 @@ public class Asana {
     @NonNull
     private String image;
 
-//    @NonNull
-//    private String fullInfo;
-
     @NonNull
     private String positiveEffects;
 
@@ -38,9 +34,9 @@ public class Asana {
     private String negativeEffects;
 
 //    @JoinColumn(name = "user_id")
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    private User user;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @MapsId
+//    private User user;
 
 //
 //    @Override

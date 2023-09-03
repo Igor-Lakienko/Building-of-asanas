@@ -1,4 +1,4 @@
-package lia.ru.building.asanas.repositories;
+package lia.ru.building.asanas.repository;
 
 import lia.ru.building.asanas.models.Asana;
 import org.springframework.data.jpa.repository.Query;

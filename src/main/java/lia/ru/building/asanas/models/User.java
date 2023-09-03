@@ -19,8 +19,8 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
-    @SequenceGenerator(name = "user_generator", sequenceName = "seq_user")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_generator")
+    @SequenceGenerator(name = "users_generator", sequenceName = "seq_user")
     @NonNull
     private long id;
 
@@ -48,7 +48,8 @@ public class User implements UserDetails {
 //    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
 //    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Role roles;
+    @Column(name = "role")
+    private Role role;
 
     @Override
     public boolean isAccountNonExpired() {
@@ -67,7 +68,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(getRoles());
+        return Collections.singleton(getRole());
     }
 
 //    @Override

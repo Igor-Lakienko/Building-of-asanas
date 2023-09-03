@@ -2,7 +2,7 @@ package lia.ru.building.asanas.controllers;
 
 import lia.ru.building.asanas.models.Role;
 import lia.ru.building.asanas.models.User;
-import lia.ru.building.asanas.repositories.UserRepository;
+import lia.ru.building.asanas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
-import java.util.Collections;
 
 @Controller
 public class UserController {
@@ -107,7 +106,7 @@ public class UserController {
                 .password(password)
                 .email(email)
                 .enabled(true)
-                .roles(Role.USER)
+                .role(Role.ADMIN)
                 .commentOfUser("Здесь вы можете оставить свой комментарий к уроку.")
                 .build();
 //        User user = new User(username, password, email, true, Collections.singleton(Role.USER),

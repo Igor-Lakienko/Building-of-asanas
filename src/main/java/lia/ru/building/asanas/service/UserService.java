@@ -1,7 +1,7 @@
 package lia.ru.building.asanas.service;
 
 import lia.ru.building.asanas.models.User;
-import lia.ru.building.asanas.repositories.UserRepository;
+import lia.ru.building.asanas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

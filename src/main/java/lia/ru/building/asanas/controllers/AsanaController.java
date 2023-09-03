@@ -2,7 +2,7 @@ package lia.ru.building.asanas.controllers;
 
 import lia.ru.building.asanas.models.Asana;
 import lia.ru.building.asanas.models.User;
-import lia.ru.building.asanas.repositories.AsanaRepository;
+import lia.ru.building.asanas.repository.AsanaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -31,18 +31,16 @@ public class AsanaController {
 
     @PostMapping("/asana/add")
     public String adding(
-            @AuthenticationPrincipal User user,
             @RequestParam String title,
             @RequestParam String image,
             @RequestParam String info,
-            @RequestParam String fullInfo,
             @RequestParam String positiveEffects,
             @RequestParam String negativeEffects) {
 
         var asana = Asana.builder()
                 .title(title)
                 .image(image)
-                .user(user)
+                .info(info)
                 .positiveEffects(positiveEffects)
                 .negativeEffects(negativeEffects)
                 .build();
@@ -89,7 +87,6 @@ public class AsanaController {
             @RequestParam String title,
             @RequestParam String image,
             @RequestParam String info,
-            @RequestParam String fullInfo,
             @RequestParam String positiveEffects,
             @RequestParam String negativeEffects) {
 
@@ -100,7 +97,7 @@ public class AsanaController {
         asana.setPositiveEffects(positiveEffects);
         asana.setNegativeEffects(negativeEffects);
 
-        if (title.length() < 1 || image.length() < 1 || info.length() < 1 || fullInfo.length() < 1
+        if (title.length() < 1 || image.length() < 1 || info.length() < 1
                 || positiveEffects.length() < 1 || negativeEffects.length() < 1)
             return "redirect:/asana/" + id + "/update?error=empty";
         else

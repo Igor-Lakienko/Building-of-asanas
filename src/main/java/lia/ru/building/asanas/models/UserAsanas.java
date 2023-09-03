@@ -17,11 +17,13 @@ public class UserAsanas {
     @SequenceGenerator(name = "user_asanas_generator", sequenceName = "seq_user_asanas")
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @MapsId
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @MapsId
+    @JoinColumn(name = "asana_id", referencedColumnName = "id")
     private Asana asana;
 }

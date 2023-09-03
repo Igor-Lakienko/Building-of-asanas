@@ -4,9 +4,9 @@ package lia.ru.building.asanas.controllers;
 import lia.ru.building.asanas.models.Asana;
 import lia.ru.building.asanas.models.User;
 import lia.ru.building.asanas.models.UserAsanas;
-import lia.ru.building.asanas.repositories.AsanaRepository;
-import lia.ru.building.asanas.repositories.UserAsanasRepository;
-import lia.ru.building.asanas.repositories.UserRepository;
+import lia.ru.building.asanas.repository.AsanaRepository;
+import lia.ru.building.asanas.repository.UserAsanasRepository;
+import lia.ru.building.asanas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,13 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.*;
-
+import java.util.Collections;
 
 @Controller
 public class CartController {
-
-    UserAsanas userAsanas = new UserAsanas();
 
     @Autowired
     private UserRepository userRepository;
@@ -40,11 +37,13 @@ public class CartController {
                                  Principal principal,Model model){
 
         User user = userRepository.findByUsername(principal.getName());
-//        Set<UserAsanas> user_asanas = user.getUserAsanas();
-//        String user_comment = user.getComment();
+        Iterable<UserAsanas> allById = userAsanasRepository.findAllById(Collections.singleton(user.getId()));
 
-//        model.addAttribute("user_comment", user_comment);
-//        model.addAttribute("user_asanas", user_asanas);
+//        Set<UserAsanas> user_asanas = user.getUserAsanas();
+//        String user_comment = user.getCommentOfUser();
+
+        model.addAttribute("user_comment", user.getCommentOfUser());
+        model.addAttribute("user_asanas", allById);
 
         return "cart-asanas";
     }
@@ -56,11 +55,13 @@ public class CartController {
         User userCurrent = userRepository.findByUsername(principal.getName());
         Asana asanaCurrent = asanaRepository.findById(id).orElse(new Asana());
 
-        userAsanas = new UserAsanas();
-        userAsanas.setUser(userCurrent);
-        userAsanas.setAsana(asanaCurrent);
+        var build = UserAsanas.builder()
+                .asana(asanaCurrent)
+                .user(userCurrent)
+                .build();
 
-        userAsanasRepository.save(userAsanas);
+        //todo не сохраняется asana_id.
+//        userAsanasRepository.save(build);
 
         return "redirect:/cart-asanas/";
     }
@@ -69,7 +70,7 @@ public class CartController {
     @PostMapping("/cart-asanas/{id}/delete")
     public String deleteCurrentAsana(@PathVariable(value = "id") long id) {
 
-        UserAsanas userAsanas = userAsanasRepository.findById(id).orElse(new UserAsanas());
+//        UserAsanas userAsanas = userAsanasRepository.findById(id).orElse(new UserAsanas());
         userAsanasRepository.deleteById(id);
 
         return "redirect:/cart-asanas/";
@@ -81,9 +82,8 @@ public class CartController {
                              Principal principal,Model model){
 
         User user = userRepository.findByUsername(principal.getName());
-        String user_comment = user.getCommentOfUser();
 
-        model.addAttribute("user_comment", user_comment);
+        model.addAttribute("user_comment", user.getCommentOfUser());
 
         if(error.equals("comment"))
             model.addAttribute("error","Комментарий не должен быть пустым.");
@@ -93,18 +93,18 @@ public class CartController {
 
 
     @PostMapping("/cart-asanas/user-comment")
-    public String updateUserComment(Principal principal,User userForm){
+    public String updateUserComment(
+            Principal principal,
+            @RequestParam String comment){
 
         User user = userRepository.findByUsername(principal.getName());
-        user.setCommentOfUser(userForm.getCommentOfUser());
+        user.setCommentOfUser(comment);
 
-        if (userForm.getCommentOfUser().length() < 1)
+        if (comment.length() < 1)
             return "redirect:/cart-asanas/user-comment?error=comment";
         else
             userRepository.save(user);
 
         return "redirect:/cart-asanas";
     }
-
-
 }
