@@ -50,7 +50,6 @@ public class AsanaController {
         if (asana.getTitle().length() < 1 || asana.getImage().length() < 1 || asana.getInfo().length() < 1
                 || asana.getPositiveEffects().length() < 1 || asana.getNegativeEffects().length() < 1)
             return "redirect:/asana/add?error=empty";
-
         else
             asanaRepository.save(asana);
 
@@ -114,5 +113,4 @@ public class AsanaController {
 
         return "redirect:/";
     }
-
 }

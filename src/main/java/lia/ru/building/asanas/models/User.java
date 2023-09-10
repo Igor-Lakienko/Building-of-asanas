@@ -7,8 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -16,11 +14,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(of = {"id"})
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_generator")
-    @SequenceGenerator(name = "users_generator", sequenceName = "seq_user")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
     private long id;
 
@@ -38,15 +36,6 @@ public class User implements UserDetails {
 
     private boolean enabled;
 
-//    @NonNull
-//    @OrderBy
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER,
-//            mappedBy = "user")
-//    private Set<UserAsanas> userAsanas = new HashSet<>();
-
-//    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
-//    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
@@ -70,18 +59,4 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(getRole());
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        User user = (User) o;
-//        return id == user.id;
-//    }
-
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
 }

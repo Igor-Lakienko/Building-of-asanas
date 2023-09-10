@@ -1,6 +1,9 @@
 package lia.ru.building.asanas.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -13,17 +16,12 @@ import javax.persistence.*;
 public class UserAsanas {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_asanas_generator")
-    @SequenceGenerator(name = "user_asanas_generator", sequenceName = "seq_user_asanas")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
-    @JoinColumn(name = "asana_id", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
     private Asana asana;
 }
