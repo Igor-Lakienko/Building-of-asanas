@@ -7,6 +7,9 @@ import lia.ru.building.asanas.models.UserAsanas;
 import lia.ru.building.asanas.repository.AsanaRepository;
 import lia.ru.building.asanas.repository.UserAsanasRepository;
 import lia.ru.building.asanas.repository.UserRepository;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,43 +17,39 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.Collections;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
+@RequiredArgsConstructor
+@Slf4j
 public class CartController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private AsanaRepository asanaRepository;
+    private final AsanaRepository asanaRepository;
 
-    @Autowired
-    private UserAsanasRepository userAsanasRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
+    private final UserAsanasRepository userAsanasRepository;
 
     @GetMapping("/cart-asanas")
-    public String userLoaded(@RequestParam(name ="error", defaultValue = "",required = false) String error,
-                                 Principal principal,Model model){
+    public String userLoaded(@RequestParam(name = "error", defaultValue = "", required = false) String error,
+                             Principal principal, Model model) {
 
-        User user = userRepository.findByUsername(principal.getName());
-        Iterable<UserAsanas> allById = userAsanasRepository.findAllById(Collections.singleton(user.getId()));
-
-//        Set<UserAsanas> user_asanas = user.getUserAsanas();
-//        String user_comment = user.getCommentOfUser();
+        var user = userRepository.findByUsername(principal.getName());
+        var all = userAsanasRepository.findAll();
+        var listUserAsanas = all.stream()
+                .filter(userAsanas -> Objects.equals(userAsanas.getUser().getId(), user.getId()))
+                .collect(Collectors.toCollection(ArrayList::new));
 
         model.addAttribute("user_comment", user.getCommentOfUser());
-        model.addAttribute("user_asanas", allById);
+        model.addAttribute("user_asanas", listUserAsanas);
 
         return "cart-asanas";
     }
 
 
     @PostMapping("/cart-asanas/{id}/add")
-    public String addAsanaCartPost(@PathVariable(value = "id") long id,Principal principal){
+    public String addAsanaCartPost(@PathVariable(value = "id") long id, Principal principal) {
 
         User userCurrent = userRepository.findByUsername(principal.getName());
         Asana asanaCurrent = asanaRepository.findById(id).orElse(new Asana());
@@ -60,8 +59,7 @@ public class CartController {
                 .user(userCurrent)
                 .build();
 
-        //todo не сохраняется asana_id.
-//        userAsanasRepository.save(build);
+        userAsanasRepository.save(build);
 
         return "redirect:/cart-asanas/";
     }
@@ -70,7 +68,6 @@ public class CartController {
     @PostMapping("/cart-asanas/{id}/delete")
     public String deleteCurrentAsana(@PathVariable(value = "id") long id) {
 
-//        UserAsanas userAsanas = userAsanasRepository.findById(id).orElse(new UserAsanas());
         userAsanasRepository.deleteById(id);
 
         return "redirect:/cart-asanas/";
@@ -78,15 +75,15 @@ public class CartController {
 
 
     @GetMapping("/cart-asanas/user-comment")
-    public String userLoadedAsanas(@RequestParam(name ="error", defaultValue = "",required = false) String error,
-                             Principal principal,Model model){
+    public String userLoadedAsanas(@RequestParam(name = "error", defaultValue = "", required = false) String error,
+                                   Principal principal, Model model) {
 
         User user = userRepository.findByUsername(principal.getName());
 
         model.addAttribute("user_comment", user.getCommentOfUser());
 
-        if(error.equals("comment"))
-            model.addAttribute("error","Комментарий не должен быть пустым.");
+        if (error.equals("comment"))
+            model.addAttribute("error", "Комментарий не должен быть пустым.");
 
         return "user-comment";
     }
@@ -95,7 +92,7 @@ public class CartController {
     @PostMapping("/cart-asanas/user-comment")
     public String updateUserComment(
             Principal principal,
-            @RequestParam String comment){
+            @RequestParam String comment) {
 
         User user = userRepository.findByUsername(principal.getName());
         user.setCommentOfUser(comment);

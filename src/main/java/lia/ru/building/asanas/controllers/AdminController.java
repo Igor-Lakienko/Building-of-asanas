@@ -10,8 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdminController {
@@ -34,14 +37,17 @@ public class AdminController {
     @GetMapping("/admin/user-{id}")
     public String userReviews(@PathVariable(value = "id") long id, Model model) {
 
-        User user = userRepository.findById(id).orElse(new User());
-        Iterable<UserAsanas> listUserAsanas = userAsanasRepository.findAllById(Collections.singleton(id));
+        var currentUser = userRepository.findById(id).orElse(new User());
+        var allUserAsanas = userAsanasRepository.findAll();
+        var listUserAsanas = allUserAsanas.stream()
+                .filter(userAsanas -> Objects.equals(userAsanas.getUser().getId(), currentUser.getId()))
+                .collect(Collectors.toCollection(ArrayList::new));
 
-        String user_comment = user.getCommentOfUser();
+        var userComment = currentUser.getCommentOfUser();
 
-        model.addAttribute("title", "Асаны пользователя: " + user.getUsername());
+        model.addAttribute("title", "Асаны пользователя: " + currentUser.getUsername());
         model.addAttribute("user_asanas", listUserAsanas);
-        model.addAttribute("user_comment", user_comment);
+        model.addAttribute("user_comment", userComment);
 
         return "user-asanas";
     }

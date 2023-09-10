@@ -10,11 +10,8 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: validate
-#    generate-ddl: true
-    show-sql: true
+      ddl-auto: update
 
-#  todo ????????????? ???????? ??? user and asana
 #  INSERT INTO seq_user(next_val) VALUES (1)
 
 

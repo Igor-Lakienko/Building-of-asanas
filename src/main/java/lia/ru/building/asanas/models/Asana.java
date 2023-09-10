@@ -10,11 +10,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Builder
+@EqualsAndHashCode(of = {"id"})
 public class Asana {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "asana_generator")
-    @SequenceGenerator(name = "asana_generator", sequenceName = "seq_asana")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
     private long id;
 
@@ -32,24 +32,4 @@ public class Asana {
 
     @NonNull
     private String negativeEffects;
-
-//    @JoinColumn(name = "user_id")
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @MapsId
-//    private User user;
-
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Asana asana = (Asana) o;
-//        return id == asana.id;
-//    }
-//
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
 }
